@@ -46,6 +46,52 @@ ACPTarget.extensionVersion().then(version => console.log("AdobeExperienceSDK: AC
 ACPTarget.registerExtension();
 ```
 
+##### Get custom visitor IDs
+
+```javascript
+ACPTarget.getThirdPartyId().then(id => console.log("AdobeExperienceSDK: Third Party ID: " + id));
+```
+
+##### Set custom visitor IDs
+
+```javascript
+ACPTarget.setThirdPartyId("thirdPartyId");
+```
+
+##### Reset user experience
+
+```javascript
+ACPTarget.resetExperience();
+```
+
+##### Get Target user identifier
+
+```javascript
+ACPTarget.getTntId().then(id => console.log("AdobeExperienceSDK: TNT ID " + id));
+```
+
+##### Load Target requests
+
+```javascript
+// TODO
+```
+
+##### Set preview restart deep link
+
+```javascript
+ACPTarget.setPreviewRestartDeeplink("https://www.adobe.com");
+```
+
+##### Send an mbox click notification
+
+```javascript
+ACPTarget.locationClicked("name",
+                          {"mboxParameterKeys": "mboxParameterValues"},
+                          {"productParameterKeys": "productParameterValues"},
+                          {"orderParametersKeys": "orderParametersValues"},
+                          {"profileParameterKeys": "profileParameterValues"});
+```
+
 ## License
 
 See LICENSE.md
