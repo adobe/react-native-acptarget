@@ -17,22 +17,37 @@
 
 @implementation RCTACPTargetDataBridge
 
+NSString *const NAME_KEY = @"name";
+NSString *const MBOX_KEY = @"mboxParameters";
+NSString *const PRODUCT_KEY = @"productParameters";
+NSString *const ORDER_KEY = @"orderParameters";
+NSString *const DEFAULT_CONTENT_KEY = @"defaultContent";
+
 + (ACPTargetPrefetchObject *)prefetchObjectFromDict: (NSDictionary*) dict {
-    ACPTargetPrefetchObject *obj = [ACPTargetPrefetchObject prefetchObjectWithName:dict[@"name"] mboxParameters:dict[@"mboxParameters"]];
+    ACPTargetPrefetchObject *obj = [ACPTargetPrefetchObject prefetchObjectWithName:dict[NAME_KEY] mboxParameters:dict[MBOX_KEY]];
     
-    if (dict[@"productParameters"]) {
-        [obj setProductParameters:dict[@"productParameters"]];
+    if (dict[PRODUCT_KEY]) {
+        [obj setProductParameters:dict[PRODUCT_KEY]];
     }
     
-    if (dict[@"orderParameters"]) {
-        [obj setOrderParameters:dict[@"orderParameters"]];
+    if (dict[ORDER_KEY]) {
+        [obj setOrderParameters:dict[ORDER_KEY]];
     }
     
     return obj;
 }
 
 + (ACPTargetRequestObject *)requestObjectFromDict: (NSDictionary*) dict {
-    return nil;
+    ACPTargetRequestObject *obj = [ACPTargetRequestObject requestObjectWithName:dict[NAME_KEY] defaultContent:dict[DEFAULT_CONTENT_KEY] mboxParameters:dict[MBOX_KEY] callback:nil];
+    
+    if (dict[PRODUCT_KEY]) {
+        [obj setProductParameters:dict[PRODUCT_KEY]];
+    }
+    
+    if (dict[ORDER_KEY]) {
+        [obj setOrderParameters:dict[ORDER_KEY]];
+    }
+    return obj;
 }
 
 @end
