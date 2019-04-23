@@ -91,7 +91,7 @@ module.exports = {
    * @see ACPTarget::loadRequests:withProfileParameters:
    * @see ACPTarget::prefetchContent:withProfileParameters:callback
    */
-  locationClicked(string: name, {string: string}: mboxParameters, {string: string}: productParameters, {string: any}: orderParameters, {string: string}: profileParameters) {
+  locationClicked(name: string, mboxParameters: {string: string}, productParameters: {string: string}, orderParameters: {string: any}, profileParameters: {string: string}) {
     RCTACPTarget.locationClicked(name, mboxParameters, productParameters, orderParameters, profileParameters);
   },
 
@@ -112,7 +112,7 @@ module.exports = {
    *
    *  @param deeplink the URL which will be set for preview restart
    */
-  setPreviewRestartDeeplink(string: deepLink) {
+  setPreviewRestartDeeplink(deepLink: string) {
     RCTACPTarget.setPreviewRestartDeeplink(deepLink);
   },
 
@@ -126,7 +126,7 @@ module.exports = {
    *  @param thirdPartyId a string pointer containing the value of the third party id (custom visitor id)
    *  @see ACPTarget::resetExperience
    */
-  setThirdPartyId(string: thirdPartyId) {
+  setThirdPartyId(thirdPartyId: string) {
     RCTACPTarget.setThirdPartyId(thirdPartyId);
   },
 
