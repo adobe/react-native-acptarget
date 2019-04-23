@@ -63,7 +63,7 @@ RCT_EXPORT_METHOD(loadRequests: (nonnull NSArray<NSDictionary*>*) requests
 
 RCT_EXPORT_METHOD(prefetchContent: (nonnull NSArray<NSDictionary*>*) prefetchObjectArray
                   withProfileParameters: (nullable NSDictionary*) profileParameters
-                  callback: (RCTResponseSenderBlock)callback) {
+                  resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject) {
     
     NSMutableArray *prefetchObjectArr = [NSMutableArray array];
     for (NSDictionary *prefetchDict in prefetchObjectArray) {

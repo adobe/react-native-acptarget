@@ -74,6 +74,10 @@ module.exports = {
     return Promise.resolve(RCTACPTarget.getTntId());
   },
 
+
+  prefetchContent(prefetchObjectArray: Array<ACPTargetPrefetchObject>, profileParameters: {string: string}): Promise<boolean> {
+    return RCTACPTarget.prefetchContent(prefetchObjectArray, profileParameters);
+  },
   // TODO loadRequests, prefetchContent
 
   /**
