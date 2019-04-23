@@ -72,7 +72,7 @@ RCT_EXPORT_METHOD(prefetchContent: (nonnull NSArray<NSDictionary*>*) prefetchObj
     }
     
     [ACPTarget prefetchContent:prefetchObjectArr withProfileParameters:profileParameters callback:^(BOOL success) {
-        resolve(success);
+        resolve(@(success));
     }];
 }
 
