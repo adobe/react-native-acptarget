@@ -76,6 +76,20 @@ ACPTarget.getTntId().then(id => console.log("AdobeExperienceSDK: TNT ID " + id))
 // TODO
 ```
 
+##### Using the prefetch APIs
+
+```javascript
+import {ACPTargetPrefetchObject} from '@adobe/react-native-acptarget';
+
+var arr = [];
+var obj = new ACPTargetPrefetchObject("name", {"mboxParameter": "values"});
+obj.setOrderParameters({"orderParam": "value"});
+obj.setProductParameters({"productParameters": "value"});
+arr[0] = obj;
+arr[1] = new ACPTargetPrefetchObject("name1", {"mboxParameter": "values"});
+ACPTarget.prefetchContent(arr, {"profileParameters": "params"}).then(successful => console.log("AdobeExperienceSDK: Success = " + successful));
+```
+
 ##### Set preview restart deep link
 
 ```javascript
