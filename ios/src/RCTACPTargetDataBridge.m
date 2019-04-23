@@ -18,7 +18,17 @@
 @implementation RCTACPTargetDataBridge
 
 + (ACPTargetPrefetchObject *)prefetchObjectFromDict: (NSDictionary*) dict {
-    return nil;
+    ACPTargetPrefetchObject *obj = [ACPTargetPrefetchObject prefetchObjectWithName:dict[@"name"] mboxParameters:dict[@"mboxParameters"]];
+    
+    if (dict[@"productParameters"]) {
+        [obj setProductParameters:dict[@"productParameters"]];
+    }
+    
+    if (dict[@"orderParameters"]) {
+        [obj setOrderParameters:dict[@"orderParameters"]];
+    }
+    
+    return obj;
 }
 
 + (ACPTargetRequestObject *)requestObjectFromDict: (NSDictionary*) dict {
