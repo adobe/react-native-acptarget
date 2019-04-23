@@ -10,7 +10,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, ScrollView, NativeModules} from 'react-native';
 import {ACPCore, ACPLifecycle, ACPSignal, ACPIdentity, ACPMobileLogLevel, ACPMobilePrivacyStatus, ACPMobileVisitorAuthenticationState, ACPVisitorID, ACPExtensionEvent} from '@adobe/react-native-acpcore';
-import {ACPTarget} from '@adobe/react-native-acptarget';
+import {ACPTarget, ACPTargetPrefetchObject} from '@adobe/react-native-acptarget';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -89,9 +89,12 @@ export default class App extends Component<Props> {
 
   prefetchContent() {
     var arr = [];
-    arr[0] = ACPTargetPrefetchObject("name", {"mboxParameter": "values"});;
-    arr[1] = ACPTargetPrefetchObject("name1", {"mboxParameter": "values"});
-    ACPTarget.prefetchContent(arr, {"profileParameters": "params"}).them(successful => console.log("AdobeExperienceSDK: Success = " + successful));
+    var obj = new ACPTargetPrefetchObject("name", {"mboxParameter": "values"});
+    obj.setOrderParameters({"orderParam": "value"});
+    obj.setProductParameters({"productParameters": "value"});
+    arr[0] = obj;
+    arr[1] = new ACPTargetPrefetchObject("name1", {"mboxParameter": "values"});
+    ACPTarget.prefetchContent(arr, {"profileParameters": "params"}).then(successful => console.log("AdobeExperienceSDK: Success = " + successful));
   }
 
 }

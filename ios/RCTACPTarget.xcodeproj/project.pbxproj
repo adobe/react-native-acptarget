@@ -85,15 +85,7 @@
 				21DD98D7225E4B5E00376DF6 /* RCTACPTargetDataBridge.m */,
 				21DD98D0225E420E00376DF6 /* libs */,
 				134814211AA4EA7D00B7C361 /* Products */,
-				DF0D380E1B8B8A032C71ACE2 /* Pods */,
 			);
-			sourceTree = "<group>";
-		};
-		DF0D380E1B8B8A032C71ACE2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

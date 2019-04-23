@@ -36,14 +36,6 @@ class ACPTargetPrefetchObject {
   }
 
   setOrderParameters(orderId: string, orderTotal: number, purchasedProductIds: Array<string>) {
-  	var cleanedProducts = purchasedProductIds.filter(function (e) {
-    	return typeof e == 'string';
-  	});
-
-  	if (cleanedProducts.length != purchasedProductIds.length) {
-  		console.log("AdobeExperienceSDK: Target Prefetch: Found invalid elements in purchased product ids. Removing non-string values.");
-  	}
-
   	this.orderParameters = {OrderId : orderId, OrderTotal : orderTotal, OrderPurchasedProductIds : cleanedProducts};
   }
 
