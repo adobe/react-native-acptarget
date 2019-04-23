@@ -88,7 +88,10 @@ export default class App extends Component<Props> {
   }
 
   prefetchContent() {
-
+    var arr = [];
+    arr[0] = ACPTargetPrefetchObject("name", {"mboxParameter": "values"});;
+    arr[1] = ACPTargetPrefetchObject("name1", {"mboxParameter": "values"});
+    ACPTarget.prefetchContent(arr, {"profileParameters": "params"}).them(successful => console.log("AdobeExperienceSDK: Success = " + successful));
   }
 
 }

@@ -78,7 +78,8 @@ module.exports = {
   prefetchContent(prefetchObjectArray: Array<ACPTargetPrefetchObject>, profileParameters: {string: string}): Promise<boolean> {
     return RCTACPTarget.prefetchContent(prefetchObjectArray, profileParameters);
   },
-  // TODO loadRequests, prefetchContent
+  
+  // TODO loadRequests
 
   /**
    * @brief Sends a click notification to Target if a click metric is defined for the provided location name.
