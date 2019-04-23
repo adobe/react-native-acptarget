@@ -129,7 +129,7 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public static void prefetchContent(final ReadableArray targetPrefetchList,
                                      final ReadableMap profileParameters,
-                                     final Callback callback) {
+                                     final Promise promise) {
     List<TargetPrefetch> prefetchList = new ArrayList<>();
     for (int i = 0; i < targetPrefetchList.size(); i++) {
       TargetPrefetch prefetchObj = RCTACPTargetDataBridge.mapToPrefetch(targetPrefetchList.getMap(i));
@@ -141,7 +141,7 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
     Target.prefetchContent(prefetchList, profileParametersConverted, new AdobeCallback<Boolean>() {
       @Override
       public void call(Boolean success) {
-        callback.invoke(success);
+        promise.resolve(success);
       }
     });
 
@@ -150,14 +150,14 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public static void loadRequests(final ReadableArray targetRequestList,
                                   final ReadableMap profileParameters) {
-    List<TargetRequest> requestList = new ArrayList<>();
-    for (int i = 0; i < targetRequestList.size(); i++) {
-      TargetRequest requestObj = RCTACPTargetDataBridge.mapToRequest(targetRequestList.getMap(i));
-      requestList.add(requestObj);
-    }
-
-    Map<String, String> profileParametersConverted = RCTACPTargetMapUtil.toStringMap(profileParameters);
-    Target.loadRequests(requestList, profileParametersConverted);
+//    List<TargetRequest> requestList = new ArrayList<>();
+//    for (int i = 0; i < targetRequestList.size(); i++) {
+//      TargetRequest requestObj = RCTACPTargetDataBridge.mapToRequest(targetRequestList.getMap(i));
+//      requestList.add(requestObj);
+//    }
+//
+//    Map<String, String> profileParametersConverted = RCTACPTargetMapUtil.toStringMap(profileParameters);
+//    Target.loadRequests(requestList, profileParametersConverted);
   }
 
 
