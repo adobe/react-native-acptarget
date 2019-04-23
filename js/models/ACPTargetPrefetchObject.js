@@ -36,7 +36,7 @@ class ACPTargetPrefetchObject {
   }
 
   setOrderParameters(orderId: string, orderTotal: number, purchasedProductIds: Array<string>) {
-  	this.orderParameters = {OrderId : orderId, OrderTotal : orderTotal, OrderPurchasedProductIds : cleanedProducts};
+  	this.orderParameters = {OrderId : orderId, OrderTotal : orderTotal, OrderPurchasedProductIds : purchasedProductIds};
   }
 
   setProductParameters(productId: string, categoryId: string) {
