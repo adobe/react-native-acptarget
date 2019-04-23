@@ -19,9 +19,18 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{ marginTop: 75 }}>
-        <Text style={styles.welcome}>ACPCore Test App</Text>
+        <Text style={styles.welcome}>ACPTarget Test App</Text>
         <Button title="ACPCore::extensionVersion()" onPress={() => this.coreExtensionVersion()}/>
-        <Button title="ACPTarget::extensionVersion()" onPress={this.targetExtensionVersion()}/>
+        <Button title="ACPTarget::extensionVersion()" onPress={() => this.targetExtensionVersion()}/>
+        <Button title="ACPTarget::clearPrefetchCache()" onPress={() => this.clearPrefetchCache()}/>
+        <Button title="ACPTarget::getThirdPartyId()" onPress={() => this.getThirdPartyId()}/>
+        <Button title="ACPTarget::getTntId()" onPress={() => this.getTntId()}/>
+        <Button title="ACPTarget::locationClicked()" onPress={() => this.locationClicked()}/>
+        <Button title="ACPTarget::resetExperience()" onPress={() => this.resetExperience()}/>
+        <Button title="ACPTarget::setPreviewRestartDeeplink()" onPress={() => this.setPreviewRestartDeeplink()}/>
+        <Button title="ACPTarget::setThirdPartyId()" onPress={() => this.setThirdPartyId()}/>
+        <Button title="ACPTarget::loadRequests()" onPress={() => this.loadRequests()}/>
+        <Button title="ACPTarget::prefetchContent()" onPress={() => this.prefetchContent()}/>
 
         </ScrollView>
       </View>
@@ -29,14 +38,6 @@ export default class App extends Component<Props> {
   }
 
   initSDK() {
-    // console.log("AdobeExperienceSDK IMPORT: ACPCore = " + ACPCore);
-    // console.log("AdobeExperienceSDK IMPORT: ACPLifecycle = " + ACPLifecycle);
-    // console.log("AdobeExperienceSDK IMPORT: ACPSignal = " + ACPSignal);
-    // console.log("AdobeExperienceSDK IMPORT: ACPIdentity = " + ACPIdentity);
-    // console.log("AdobeExperienceSDK IMPORT: ACPMobileLogLevel = " + ACPMobileLogLevel);
-    // console.log("AdobeExperienceSDK IMPORT: ACPMobilePrivacyStatus = " + ACPMobilePrivacyStatus);
-    // console.log("AdobeExperienceSDK IMPORT: ACPMobileVisitorAuthenticationState = " + ACPMobileVisitorAuthenticationState);
-    // console.log("AdobeExperienceSDK IMPORT: ACPVisitorID = " + ACPVisitorID);
     ACPCore.setLogLevel(ACPMobileLogLevel.VERBOSE);
     ACPCore.configureWithAppId("launch-EN1a68f9bc5b3c475b8c232adc3f8011fb");
     ACPLifecycle.registerExtension();
@@ -52,6 +53,42 @@ export default class App extends Component<Props> {
 
   targetExtensionVersion() {
     ACPTarget.extensionVersion().then(version => console.log("AdobeExperienceSDK: ACPTarget version: " + version));
+  }
+
+  clearPrefetchCache() {
+    ACPTarget.clearPrefetchCache();
+  }
+
+  getThirdPartyId() {
+    ACPTarget.getThirdPartyId().then(id => console.log("AdobeExperienceSDK: Third Party ID: " + id));
+  }
+
+  getTntId() {
+    ACPTarget.getTntId().then(id => console.log("AdobeExperienceSDK: TNT ID " + id));
+  }
+
+  locationClicked() {
+    ACPTarget.locationClicked("name", {"mboxParameterKeys": "mboxParameterValues"}, {"productParameterKeys": "productParameterValues"}, {"orderParametersKeys": "orderParametersValues"}, {"profileParameterKeys": "profileParameterValues"});
+  }
+
+  resetExperience() {
+    ACPTarget.resetExperience();
+  }
+
+  setPreviewRestartDeeplink() {
+    ACPTarget.setPreviewRestartDeeplink("https://www.adobe.com");
+  }
+
+  setThirdPartyId() {
+    ACPTarget.setThirdPartyId("thirdPartyId");
+  }
+
+  loadRequests() {
+
+  }
+
+  prefetchContent() {
+
   }
 
 }
