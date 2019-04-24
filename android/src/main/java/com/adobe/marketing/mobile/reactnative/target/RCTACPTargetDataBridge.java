@@ -18,6 +18,7 @@
 package com.adobe.marketing.mobile.reactnative.target;
 
 import com.adobe.marketing.mobile.TargetPrefetch;
+import com.adobe.marketing.mobile.TargetRequest;
 import com.facebook.react.bridge.ReadableMap;
 
 public class RCTACPTargetDataBridge {
@@ -26,6 +27,7 @@ public class RCTACPTargetDataBridge {
     final private static String MBOX_PARAMETER_KEY = "mboxParameters";
     final private static String PRODUCT_PARAMETERS_KEY = "productParameters";
     final private static String ORDER_PARAMETERS_KEY = "orderParameters";
+    final private static String DEFAULT_CONTENT_KEY = "defaultContent";
 
     public static TargetPrefetch mapToPrefetch(ReadableMap map) {
         TargetPrefetch.Builder prefetchBuilder = new TargetPrefetch.Builder(map.getString(NAME_KEY)).setMboxParameters(RCTACPTargetMapUtil.toStringMap(map.getMap(MBOX_PARAMETER_KEY)));
@@ -39,5 +41,24 @@ public class RCTACPTargetDataBridge {
 
         return prefetchBuilder.build();
     }
+
+    public static TargetRequest mapToRequest(ReadableMap map) {
+        TargetRequest.Builder requestBuilder = new TargetRequest.Builder(map.getString(NAME_KEY), map.getString(DEFAULT_CONTENT_KEY));
+
+        if (!map.isNull(MBOX_PARAMETER_KEY)) {
+            requestBuilder.setMboxParameters(RCTACPTargetMapUtil.toStringMap(map.getMap(MBOX_PARAMETER_KEY)));
+        }
+
+        if (!map.isNull(PRODUCT_PARAMETERS_KEY)) {
+            requestBuilder.setOrderParameters(RCTACPTargetMapUtil.toMap(map.getMap(PRODUCT_PARAMETERS_KEY)));
+        }
+
+        if (!map.isNull(ORDER_PARAMETERS_KEY)) {
+            requestBuilder.setProductParameters(RCTACPTargetMapUtil.toStringMap(map.getMap(ORDER_PARAMETERS_KEY)));
+        }
+
+        return requestBuilder.build();
+    }
+
 
 }

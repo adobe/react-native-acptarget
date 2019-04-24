@@ -150,14 +150,14 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public static void loadRequests(final ReadableArray targetRequestList,
                                   final ReadableMap profileParameters) {
-//    List<TargetRequest> requestList = new ArrayList<>();
-//    for (int i = 0; i < targetRequestList.size(); i++) {
-//      TargetRequest requestObj = RCTACPTargetDataBridge.mapToRequest(targetRequestList.getMap(i));
-//      requestList.add(requestObj);
-//    }
-//
-//    Map<String, String> profileParametersConverted = RCTACPTargetMapUtil.toStringMap(profileParameters);
-//    Target.loadRequests(requestList, profileParametersConverted);
+    List<TargetRequest> requestList = new ArrayList<>();
+    for (int i = 0; i < targetRequestList.size(); i++) {
+      TargetRequest requestObj = RCTACPTargetDataBridge.mapToRequest(targetRequestList.getMap(i));
+      requestList.add(requestObj);
+    }
+
+    Map<String, String> profileParametersConverted = RCTACPTargetMapUtil.toStringMap(profileParameters);
+    Target.loadRequests(requestList, profileParametersConverted);
   }
 
 
