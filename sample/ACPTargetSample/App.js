@@ -86,25 +86,24 @@ export default class App extends Component<Props> {
   loadRequests() {
     var mboxParameters1 = {"status": "platinum"};
     var productParameters1 = {"id": "24D3412", "categoryId": "Books"};
-    var orderParameters1 = {"id":"ADCKKIM", "total":"344.30", "purchasedProductIds": "34, 125, 99"};
+    var orderParameters1 = {"id": "ADCKKIM", "total": "344.30", "purchasedProductIds": "34, 125, 99"};
     var mboxParameters2 = {"userType": "Paid"};
-    var productParameters2 = {"id":"764334", "categoryId":"Online"};
+    var productParameters2 = {"id": "764334", "categoryId": "Online"};
     var purchaseIDs = ["id1","id2"];
-    var orderParameters2 = {"id":"4t4uxksa", "total":"54.90", "purchasedProductIds":purchaseIDs};
+    var orderParameters2 = {"id": "4t4uxksa", "total": "54.90", "purchasedProductIds": purchaseIDs};
 
     var request1 = new ACPTargetRequestObject("logo", "Bluewhale", mboxParameters1);
     request1.productParameters = productParameters1;
     request1.orderParameters = orderParameters1;
 
-    var request2 = new ACPTargetRequestObject("buttonColor", "red", mboxParameters2);
-    request2.productParameters = productParameters1;
-    request2.orderParameters = orderParameters1;
-
-    var requestArray = [request1, request2];
-​
-    var profileParameters = {"age":"20-32"};
-
-    ACPTarget.loadRequests(requestArray, profileParameters);
+    // var request2 = new ACPTargetRequestObject("buttonColor", "red", mboxParameters2);
+    // request2.productParameters = productParameters1;
+    // request2.orderParameters = orderParameters1;
+    //
+    // var requestArray = [request1, request2];
+    // var profileParameters = {"age":"20-32"};
+    //
+    // ACPTarget.loadRequests(requestArray, profileParameters);
   }
 
   prefetchContent() {
@@ -124,7 +123,9 @@ export default class App extends Component<Props> {
     prefetch2.productParameters = productParameters2;
     prefetch2.orderParameters = orderParameters2;
 
+    var prefetchArray = [prefetch1, prefetch2];
     var profileParameters = {"age":"20-32"};
+
     ACPTarget.prefetchContent(prefetchArray, {"profileParameters": profileParameters}).then(successful => console.log("AdobeExperienceSDK: Success = " + successful));
   }
 
