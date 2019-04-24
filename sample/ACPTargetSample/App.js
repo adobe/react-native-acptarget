@@ -96,14 +96,14 @@ export default class App extends Component<Props> {
     request1.productParameters = productParameters1;
     request1.orderParameters = orderParameters1;
 
-    // var request2 = new ACPTargetRequestObject("buttonColor", "red", mboxParameters2);
-    // request2.productParameters = productParameters1;
-    // request2.orderParameters = orderParameters1;
-    //
-    // var requestArray = [request1, request2];
-    // var profileParameters = {"age":"20-32"};
-    //
-    // ACPTarget.loadRequests(requestArray, profileParameters);
+    var request2 = new ACPTargetRequestObject("buttonColor", "red", mboxParameters2);
+    request2.productParameters = productParameters1;
+    request2.orderParameters = orderParameters1;
+
+    var requestArray = [request1, request2];
+    var profileParameters = {"age":"20-32"};
+
+    ACPTarget.loadRequests(requestArray, profileParameters);
   }
 
   prefetchContent() {
