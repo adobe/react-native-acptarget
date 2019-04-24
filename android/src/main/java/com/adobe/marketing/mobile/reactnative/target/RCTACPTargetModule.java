@@ -102,7 +102,7 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void setPreviewRestartDeepLink(final String deepLinkString) {
+  public void setPreviewRestartDeeplink(final String deepLinkString) {
     Uri deepLink = Uri.parse(deepLinkString);
 
     if (deepLink != null) {
