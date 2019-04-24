@@ -10,7 +10,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, ScrollView, NativeModules} from 'react-native';
 import {ACPCore, ACPLifecycle, ACPSignal, ACPIdentity, ACPMobileLogLevel, ACPMobilePrivacyStatus, ACPMobileVisitorAuthenticationState, ACPVisitorID, ACPExtensionEvent} from '@adobe/react-native-acpcore';
-import {ACPTarget, ACPTargetPrefetchObject} from '@adobe/react-native-acptarget';
+import {ACPTarget, ACPTargetPrefetchObject, ACPTargetRequestObject} from '@adobe/react-native-acptarget';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -84,17 +84,48 @@ export default class App extends Component<Props> {
   }
 
   loadRequests() {
+    var mboxParameters1 = {"status": "platinum"};
+    var productParameters1 = {"id": "24D3412", "categoryId": "Books"};
+    var orderParameters1 = {"id":"ADCKKIM", "total":"344.30", "purchasedProductIds": "34, 125, 99"};
+    var mboxParameters2 = {"userType": "Paid"};
+    var productParameters2 = {"id":"764334", "categoryId":"Online"};
+    var purchaseIDs = ["id1","id2"];
+    var orderParameters2 = {"id":"4t4uxksa", "total":"54.90", "purchasedProductIds":purchaseIDs};
 
+    var request1 = new ACPTargetRequestObject("logo", "Bluewhale", mboxParameters1);
+    request1.productParameters = productParameters1;
+    request1.orderParameters = orderParameters1;
+
+    var request2 = new ACPTargetRequestObject("buttonColor", "red", mboxParameters2);
+    request2.productParameters = productParameters1;
+    request2.orderParameters = orderParameters1;
+
+    var requestArray = [request1, request2];
+​
+    var profileParameters = {"age":"20-32"};
+
+    ACPTarget.loadRequests(requestArray, profileParameters);
   }
 
   prefetchContent() {
-    var arr = [];
-    var obj = new ACPTargetPrefetchObject("name", {"mboxParameter": "values"});
-    obj.setOrderParameters({"orderParam": "value"});
-    obj.setProductParameters({"productParameters": "value"});
-    arr[0] = obj;
-    arr[1] = new ACPTargetPrefetchObject("name1", {"mboxParameter": "values"});
-    ACPTarget.prefetchContent(arr, {"profileParameters": "params"}).then(successful => console.log("AdobeExperienceSDK: Success = " + successful));
+    var mboxParameters1 = {"status": "platinum"};
+    var productParameters1 = {"id": "24D3412", "categoryId": "Books"};
+    var orderParameters1 = {"id":"ADCKKIM", "total":"344.30", "purchasedProductIds": "34, 125, 99"};
+    var mboxParameters2 = {"userType": "Paid"};
+    var productParameters2 = {"id":"764334", "categoryId":"Online"};
+    var purchaseIDs = ["id1","id2"];
+    var orderParameters2 = {"id":"4t4uxksa", "total":"54.90", "purchasedProductIds":purchaseIDs};
+
+    var prefetch1 = new ACPTargetPrefetchObject("logo", mboxParameters1);
+    prefetch1.productParameters = productParameters1;
+    prefetch1.orderParameters = orderParameters1;
+
+    var prefetch2 = new ACPTargetPrefetchObject("buttonColor", mboxParameters2);
+    prefetch2.productParameters = productParameters2;
+    prefetch2.orderParameters = orderParameters2;
+
+    var profileParameters = {"age":"20-32"};
+    ACPTarget.prefetchContent(prefetchArray, {"profileParameters": profileParameters}).then(successful => console.log("AdobeExperienceSDK: Success = " + successful));
   }
 
 }

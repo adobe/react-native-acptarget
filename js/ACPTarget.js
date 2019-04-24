@@ -20,6 +20,9 @@
 
 const RCTACPTarget = require('react-native').NativeModules.ACPTarget;
 
+import type {ACPTargetPrefetchObject} from './models/ACPTargetPrefetchObject';
+import type {ACPTargetRequestObject} from './models/ACPTargetRequestObject';
+
 module.exports = {
   /**
    * @brief Returns the current version of the ACPTarget Extension.
@@ -78,8 +81,11 @@ module.exports = {
   prefetchContent(prefetchObjectArray: Array<ACPTargetPrefetchObject>, profileParameters: {string: string}): Promise<boolean> {
     return RCTACPTarget.prefetchContent(prefetchObjectArray, profileParameters);
   },
-  
+
   // TODO loadRequests
+  loadRequests(requests: Array<ACPTargetRequestObject>, profileParameters: {string: string}) {
+    RCTACPTarget.loadRequests(requests, profileParameters);
+  },
 
   /**
    * @brief Sends a click notification to Target if a click metric is defined for the provided location name.
