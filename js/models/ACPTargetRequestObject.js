@@ -18,15 +18,14 @@
 
 'use strict';
 
-import type {ACPTargetPrefetchObject} from './ACPTargetPrefetchObject';
+import ACPTargetPrefetchObject from './ACPTargetPrefetchObject';
 
 class ACPTargetRequestObject extends ACPTargetPrefetchObject {
   defaultContent:   string;
 
   constructor(name: string, defaultContent: string, mboxParameters: {string: string}) {
-    this.name = name;
+    super(name, mboxParameters);
     this.defaultContent = defaultContent;
-    this.mboxParameters = mboxParameters;
   }
 }
 
