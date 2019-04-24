@@ -136,6 +136,22 @@ ACPTarget.locationClicked("name",
                           {"profileParameterKeys": "profileParameterValues"});
 ```
 
+##### ACPTargetPrefetchObject
+The Target extension exports a class `ACPTargetPrefetchObject`.
+
+```javascript
+constructor(name?: string, mboxParameters?: {string: string};
+setOrderParameters(orderId: string, orderTotal: number, purchasedProductIds: Array<string>);
+setProductParameters(productId: string, categoryId: string);
+```
+
+
+##### ACPTargetRequestObject
+The Target extension exports a class `ACPTargetRequestObject`, which extends `ACPTargetPrefetchObject`.
+```javascript
+constructor(name: string, defaultContent: string, mboxParameters: {string: string});
+```
+
 ## License
 
 See LICENSE.md
