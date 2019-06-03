@@ -1,20 +1,13 @@
-/* ***********************************************************************
- * ADOBE CONFIDENTIAL
- * ___________________
- *
- * Copyright 2019 Adobe Systems Incorporated
- * All Rights Reserved.
- *
- * NOTICE:  All information contained herein is, and remains
- * the property of Adobe Systems Incorporated and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to Adobe Systems Incorporated and its
- * suppliers and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Adobe Systems Incorporated.
- **************************************************************************/
-
+/*
+Copyright 2019 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+*/
 package com.adobe.marketing.mobile.reactnative.target;
 
 import android.net.Uri;
@@ -23,6 +16,7 @@ import android.util.Log;
 import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.InvalidInitException;
 import com.adobe.marketing.mobile.Target;
+import com.adobe.marketing.mobile.TargetParameters;
 import com.adobe.marketing.mobile.TargetPrefetch;
 import com.adobe.marketing.mobile.TargetRequest;
 import com.facebook.react.bridge.Promise;
@@ -31,11 +25,9 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.Callback;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+
 
 
 public class RCTACPTargetModule extends ReactContextBaseJavaModule {
@@ -113,52 +105,55 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void locationClicked(final String mboxName,
-                                     final ReadableMap mboxParameters,
-                                     final ReadableMap productParameters,
-                                     final ReadableMap orderParameters,
-                                     final ReadableMap profileParameters) {
-    Map<String, String> mboxParametersConverted = RCTACPTargetMapUtil.toStringMap(mboxParameters);
-    Map<String, String> productParametersConverted = RCTACPTargetMapUtil.toStringMap(productParameters);
-    Map<String, Object> orderParametersConverted = RCTACPTargetMapUtil.toMap(orderParameters);
-    Map<String, String> profileParametersConverted = RCTACPTargetMapUtil.toStringMap(profileParameters);
+  public void retrieveLocationContent(ReadableArray targetRequestList, ReadableMap parameters) {
+    ArrayList<TargetRequest> requestList = new ArrayList<>();
+    for (int i = 0; i < targetRequestList.size(); i++) {
+      TargetRequest request = RCTACPTargetDataBridge.mapToRequest(targetRequestList.getMap(i));
+      requestList.add(request);
+    }
 
-    Target.locationClicked(mboxName, mboxParametersConverted, productParametersConverted, orderParametersConverted, profileParametersConverted);
+    TargetParameters parametersObj = RCTACPTargetDataBridge.mapToParameters(parameters);
+
+    Target.retrieveLocationContent(requestList, parametersObj);
   }
 
   @ReactMethod
-  public static void prefetchContent(final ReadableArray targetPrefetchList,
-                                     final ReadableMap profileParameters,
-                                     final Promise promise) {
-    List<TargetPrefetch> prefetchList = new ArrayList<>();
-    for (int i = 0; i < targetPrefetchList.size(); i++) {
-      TargetPrefetch prefetchObj = RCTACPTargetDataBridge.mapToPrefetch(targetPrefetchList.getMap(i));
-      prefetchList.add(prefetchObj);
+  public void locationsDisplayed(ReadableArray mboxNames, ReadableMap parameters) {
+    ArrayList<String> mboxNamesList = new ArrayList<>();
+    for (int i = 0; i < mboxNames.size(); i++) {
+      String mboxName = mboxNames.getString(i);
+      mboxNamesList.add(mboxName);
     }
 
-    Map<String, String> profileParametersConverted = RCTACPTargetMapUtil.toStringMap(profileParameters);
+    TargetParameters parametersObj = RCTACPTargetDataBridge.mapToParameters(parameters);
 
-    Target.prefetchContent(prefetchList, profileParametersConverted, new AdobeCallback<Boolean>() {
+    Target.locationsDisplayed(mboxNamesList, parametersObj);
+  }
+
+  @ReactMethod
+  public void locationClickedWithName(String mboxName, ReadableMap parameters) {
+    TargetParameters parametersObj = RCTACPTargetDataBridge.mapToParameters(parameters);
+
+    Target.locationClicked(mboxName, parametersObj);
+  }
+
+  @ReactMethod
+  public void prefetchContent(ReadableArray mboxPrefetchList, ReadableMap parameters, final Promise promise) {
+    ArrayList<TargetPrefetch> prefetchList = new ArrayList<>();
+    for (int i = 0; i < mboxPrefetchList.size(); i++) {
+      TargetPrefetch prefetch = RCTACPTargetDataBridge.mapToPrefetch(mboxPrefetchList.getMap(i));
+      prefetchList.add(prefetch);
+    }
+
+    TargetParameters parametersObj = RCTACPTargetDataBridge.mapToParameters(parameters);
+
+    Target.prefetchContent(prefetchList, parametersObj, new AdobeCallback<String>() {
       @Override
-      public void call(Boolean success) {
-        promise.resolve(success);
+      public void call(String s) {
+        promise.resolve(s);
       }
     });
 
   }
-
-  @ReactMethod
-  public static void loadRequests(final ReadableArray targetRequestList,
-                                  final ReadableMap profileParameters) {
-    List<TargetRequest> requestList = new ArrayList<>();
-    for (int i = 0; i < targetRequestList.size(); i++) {
-      TargetRequest requestObj = RCTACPTargetDataBridge.mapToRequest(targetRequestList.getMap(i));
-      requestList.add(requestObj);
-    }
-
-    Map<String, String> profileParametersConverted = RCTACPTargetMapUtil.toStringMap(profileParameters);
-    Target.loadRequests(requestList, profileParametersConverted);
-  }
-
 
 }
