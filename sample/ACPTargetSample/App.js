@@ -1,16 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
+/*
+Copyright 2019 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+@flow
+@format
+*/
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, ScrollView, NativeModules} from 'react-native';
 import {ACPCore, ACPLifecycle, ACPSignal, ACPIdentity, ACPMobileLogLevel, ACPMobilePrivacyStatus, ACPMobileVisitorAuthenticationState, ACPVisitorID, ACPExtensionEvent} from '@adobe/react-native-acpcore';
-import {ACPTarget, ACPTargetPrefetchObject, ACPTargetRequestObject} from '@adobe/react-native-acptarget';
+import {ACPTarget, ACPTargetPrefetchObject, ACPTargetRequestObject, ACPTargetOrder, ACPTargetProduct, ACPTargetParameters} from '@adobe/react-native-acptarget';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -25,12 +29,13 @@ export default class App extends Component<Props> {
         <Button title="ACPTarget::clearPrefetchCache()" onPress={() => this.clearPrefetchCache()}/>
         <Button title="ACPTarget::getThirdPartyId()" onPress={() => this.getThirdPartyId()}/>
         <Button title="ACPTarget::getTntId()" onPress={() => this.getTntId()}/>
-        <Button title="ACPTarget::locationClicked()" onPress={() => this.locationClicked()}/>
         <Button title="ACPTarget::resetExperience()" onPress={() => this.resetExperience()}/>
-        <Button title="ACPTarget::setPreviewRestartDeeplink()" onPress={() => this.setPreviewRestartDeeplink()}/>
-        <Button title="ACPTarget::setThirdPartyId()" onPress={() => this.setThirdPartyId()}/>
-        <Button title="ACPTarget::loadRequests()" onPress={() => this.loadRequests()}/>
-        <Button title="ACPTarget::prefetchContent()" onPress={() => this.prefetchContent()}/>
+        <Button title="ACPTarget::setPreviewRestartDeeplink(...)" onPress={() => this.setPreviewRestartDeeplink()}/>
+        <Button title="ACPTarget::setThirdPartyId(...)" onPress={() => this.setThirdPartyId()}/>
+        <Button title="ACPTarget::retrieveLocationContent(...)" onPress={() => this.retrieveLocationContent()}/>
+        <Button title="ACPTarget::prefetchContent(...)" onPress={() => this.prefetchContent()}/>
+        <Button title="ACPTarget::locationsDisplayed(...)" onPress={() => this.locationsDisplayed()}/>
+        <Button title="ACPTarget::locationClickedWithName(...)" onPress={() => this.locationClickedWithName()}/>
 
         </ScrollView>
       </View>
@@ -67,10 +72,6 @@ export default class App extends Component<Props> {
     ACPTarget.getTntId().then(id => console.log("AdobeExperienceSDK: TNT ID " + id));
   }
 
-  locationClicked() {
-    ACPTarget.locationClicked("name", {"mboxParameterKeys": "mboxParameterValues"}, {"productParameterKeys": "productParameterValues"}, {"orderParametersKeys": "orderParametersValues"}, {"profileParameterKeys": "profileParameterValues"});
-  }
-
   resetExperience() {
     ACPTarget.resetExperience();
   }
@@ -83,50 +84,66 @@ export default class App extends Component<Props> {
     ACPTarget.setThirdPartyId("thirdPartyId");
   }
 
-  loadRequests() {
+  retrieveLocationContent() {
     var mboxParameters1 = {"status": "platinum"};
-    var productParameters1 = {"id": "24D3412", "categoryId": "Books"};
-    var orderParameters1 = {"id": "ADCKKIM", "total": "344.30", "purchasedProductIds": "34, 125, 99"};
     var mboxParameters2 = {"userType": "Paid"};
-    var productParameters2 = {"id": "764334", "categoryId": "Online"};
-    var purchaseIDs = ["id1","id2"];
-    var orderParameters2 = {"id": "4t4uxksa", "total": "54.90", "purchasedProductIds": purchaseIDs};
+    var purchaseIDs = ["34","125"];
 
-    var request1 = new ACPTargetRequestObject("logo", "Bluewhale", mboxParameters1);
-    request1.productParameters = productParameters1;
-    request1.orderParameters = orderParameters1;
+    var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
+    var targetProduct = new ACPTargetProduct("24D3412", "Books");
+    var parameters1 = new ACPTargetParameters(mboxParameters1, null, null, null);
+    var request1 = new ACPTargetRequestObject("mboxName2", parameters1, "defaultContent1");
 
-    var request2 = new ACPTargetRequestObject("buttonColor", "red", mboxParameters2);
-    request2.productParameters = productParameters1;
-    request2.orderParameters = orderParameters1;
+    var parameters2 = new ACPTargetParameters(mboxParameters1, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
+    var request2 = new ACPTargetRequestObject("mboxName2", parameters2, "defaultContent2");
 
-    var requestArray = [request1, request2];
-    var profileParameters = {"age":"20-32"};
+    var locationRequests = [request1, request2];
+    var profileParameters1 = {"ageGroup": "20-32"};
 
-    ACPTarget.loadRequests(requestArray, profileParameters);
+    var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
+    ACPTarget.retrieveLocationContent(locationRequests, parameters);
+  }
+
+  locationsDisplayed() {
+    var purchaseIDs = ["34","125"];
+
+    var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
+    var targetProduct = new ACPTargetProduct("24D3412", "Books");
+    var profileParameters1 = {"ageGroup": "20-32"};
+    var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
+
+    ACPTarget.locationsDisplayed(["locationName", "locationName1"], parameters);
+  }
+
+  locationClickedWithName() {
+    var purchaseIDs = ["34","125"];
+
+    var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
+    var targetProduct = new ACPTargetProduct("24D3412", "Books");
+    var profileParameters1 = {"ageGroup": "20-32"};
+    var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
+
+    ACPTarget.locationClickedWithName("locationName", parameters);
   }
 
   prefetchContent() {
     var mboxParameters1 = {"status": "platinum"};
-    var productParameters1 = {"id": "24D3412", "categoryId": "Books"};
-    var orderParameters1 = {"id":"ADCKKIM", "total":"344.30", "purchasedProductIds": "34, 125, 99"};
     var mboxParameters2 = {"userType": "Paid"};
-    var productParameters2 = {"id":"764334", "categoryId":"Online"};
-    var purchaseIDs = ["id1","id2"];
-    var orderParameters2 = {"id":"4t4uxksa", "total":"54.90", "purchasedProductIds":purchaseIDs};
+    var purchaseIDs = ["34","125"];
 
-    var prefetch1 = new ACPTargetPrefetchObject("logo", mboxParameters1);
-    prefetch1.productParameters = productParameters1;
-    prefetch1.orderParameters = orderParameters1;
+    var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
+    var targetProduct = new ACPTargetProduct("24D3412", "Books");
+    var parameters1 = new ACPTargetParameters(mboxParameters1, null, null, null);
+    var prefetch1 = new ACPTargetPrefetchObject("mboxName2", parameters1);
 
-    var prefetch2 = new ACPTargetPrefetchObject("buttonColor", mboxParameters2);
-    prefetch2.productParameters = productParameters2;
-    prefetch2.orderParameters = orderParameters2;
+    var parameters2 = new ACPTargetParameters(mboxParameters1, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
+    var prefetch2 = new ACPTargetPrefetchObject("mboxName2", parameters2);
 
-    var prefetchArray = [prefetch1, prefetch2];
-    var profileParameters = {"age":"20-32"};
+    var prefetchList = [prefetch1, prefetch2];
+    var profileParameters1 = {"ageGroup": "20-32"};
 
-    ACPTarget.prefetchContent(prefetchArray, {"profileParameters": profileParameters}).then(successful => console.log("AdobeExperienceSDK: Success = " + successful));
+    var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
+    ACPTarget.prefetchContent(prefetchList, parameters).then(success => console.log(success)).catch(err => console.log(err));
   }
 
 }

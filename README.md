@@ -8,6 +8,8 @@
 
 You need to install the SDK with [npm](https://www.npmjs.com/) and configure the native Android/iOS project in your react native project. Before installing the Target extension it is recommended to begin by installing the Core extension `@adobe/react-native-acpcore`.
 
+> Note: If you are new to React Native we suggest you follow the [React Native Getting Started](<https://facebook.github.io/react-native/docs/getting-started.html>) page before continuing.
+
 ### 1. Create React Native project
 
 First create a React Native project:
@@ -21,8 +23,15 @@ react-native init MyReactApp
 Install and link the `@adobe/react-native-acptarget` package:
 
 ```bash
+cd MyReactApp
 npm install @adobe/react-native-acptarget
 react-native link @adobe/react-native-acptarget
+```
+
+## Tests
+This project contains jest unit tests which are contained in the `__tests__` directory, to run the tests locally:
+```
+make run-tests-locally
 ```
 
 ## Usage
@@ -74,50 +83,44 @@ ACPTarget.getTntId().then(id => console.log("AdobeExperienceSDK: TNT ID " + id))
 
 ```javascript
 var mboxParameters1 = {"status": "platinum"};
-var productParameters1 = {"id": "24D3412", "categoryId": "Books"};
-var orderParameters1 = {"id": "ADCKKIM", "total": "344.30", "purchasedProductIds": "34, 125, 99"};
 var mboxParameters2 = {"userType": "Paid"};
-var productParameters2 = {"id": "764334", "categoryId": "Online"};
-var purchaseIDs = ["id1","id2"];
-var orderParameters2 = {"id": "4t4uxksa", "total": "54.90", "purchasedProductIds": purchaseIDs};
+var purchaseIDs = ["34","125"];
 
-var request1 = new ACPTargetRequestObject("logo", "Bluewhale", mboxParameters1);
-request1.productParameters = productParameters1;
-request1.orderParameters = orderParameters1;
+var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
+var targetProduct = new ACPTargetProduct("24D3412", "Books");
+var parameters1 = new ACPTargetParameters(mboxParameters1, null, null, null);
+var request1 = new ACPTargetRequestObject("mboxName2", parameters1, "defaultContent1");
 
-var request2 = new ACPTargetRequestObject("buttonColor", "red", mboxParameters2);
-request2.productParameters = productParameters1;
-request2.orderParameters = orderParameters1;
+var parameters2 = new ACPTargetParameters(mboxParameters1, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
+var request2 = new ACPTargetRequestObject("mboxName2", parameters2, "defaultContent2");
 
-var requestArray = [request1, request2];
-var profileParameters = {"age":"20-32"};
+var locationRequests = [request1, request2];
+var profileParameters1 = {"ageGroup": "20-32"};
 
-ACPTarget.loadRequests(requestArray, profileParameters);
+var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
+ACPTarget.retrieveLocationContent(locationRequests, parameters);
 ```
 
 ##### Using the prefetch APIs
 
 ```javascript
 var mboxParameters1 = {"status": "platinum"};
-var productParameters1 = {"id": "24D3412", "categoryId": "Books"};
-var orderParameters1 = {"id":"ADCKKIM", "total":"344.30", "purchasedProductIds": "34, 125, 99"};
 var mboxParameters2 = {"userType": "Paid"};
-var productParameters2 = {"id":"764334", "categoryId":"Online"};
-var purchaseIDs = ["id1","id2"];
-var orderParameters2 = {"id":"4t4uxksa", "total":"54.90", "purchasedProductIds":purchaseIDs};
+var purchaseIDs = ["34","125"];
 
-var prefetch1 = new ACPTargetPrefetchObject("logo", mboxParameters1);
-prefetch1.productParameters = productParameters1;
-prefetch1.orderParameters = orderParameters1;
+var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
+var targetProduct = new ACPTargetProduct("24D3412", "Books");
+var parameters1 = new ACPTargetParameters(mboxParameters1, null, null, null);
+var prefetch1 = new ACPTargetPrefetchObject("mboxName2", parameters1);
 
-var prefetch2 = new ACPTargetPrefetchObject("buttonColor", mboxParameters2);
-prefetch2.productParameters = productParameters2;
-prefetch2.orderParameters = orderParameters2;
+var parameters2 = new ACPTargetParameters(mboxParameters1, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
+var prefetch2 = new ACPTargetPrefetchObject("mboxName2", parameters2);
 
-var prefetchArray = [prefetch1, prefetch2];
-var profileParameters = {"age":"20-32"};
+var prefetchList = [prefetch1, prefetch2];
+var profileParameters1 = {"ageGroup": "20-32"};
 
-ACPTarget.prefetchContent(prefetchArray, {"profileParameters": profileParameters}).then(successful => console.log("AdobeExperienceSDK: Success = " + successful));
+var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
+ACPTarget.prefetchContent(prefetchList, parameters).then(success => console.log(success)).catch(err => console.log(err));
 ```
 
 ##### Set preview restart deep link
@@ -129,29 +132,62 @@ ACPTarget.setPreviewRestartDeeplink("https://www.adobe.com");
 ##### Send an mbox click notification
 
 ```javascript
-ACPTarget.locationClicked("name",
-                          {"mboxParameterKeys": "mboxParameterValues"},
-                          {"productParameterKeys": "productParameterValues"},
-                          {"orderParametersKeys": "orderParametersValues"},
-                          {"profileParameterKeys": "profileParameterValues"});
+var purchaseIDs = ["34","125"];
+
+var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
+var targetProduct = new ACPTargetProduct("24D3412", "Books");
+var profileParameters1 = {"ageGroup": "20-32"};
+var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
+
+ACPTarget.locationClickedWithName("locationName", parameters);
+```
+
+##### Send an mbox location displayed notification
+```javascript
+var purchaseIDs = ["34","125"];
+
+var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
+var targetProduct = new ACPTargetProduct("24D3412", "Books");
+var profileParameters1 = {"ageGroup": "20-32"};
+var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
+
+ACPTarget.locationsDisplayed(["locationName", "locationName1"], parameters);
 ```
 
 ##### ACPTargetPrefetchObject
 The Target extension exports a class `ACPTargetPrefetchObject`.
 
 ```javascript
-constructor(name?: string, mboxParameters?: {string: string};
-setOrderParameters(orderId: string, orderTotal: number, purchasedProductIds: Array<string>);
-setProductParameters(productId: string, categoryId: string);
+constructor(name?: string, targetParameters?: ACPTargetParameters);
 ```
 
 
 ##### ACPTargetRequestObject
 The Target extension exports a class `ACPTargetRequestObject`, which extends `ACPTargetPrefetchObject`.
 ```javascript
-constructor(name: string, defaultContent: string, mboxParameters: {string: string});
+constructor(name: string, targetParameters: ACPTargetParameters, defaultContent: string);
 ```
 
-## License
+##### ACPTargetOrder
+The Target extension exports a class `ACPTargetOrder`.
+```javascript
+constructor(orderId: string, total?: number, purchasedProductIds: Array<string>);
+```
 
-See LICENSE.md
+##### ACPTargetProduct
+The Target extension exports a class `ACPTargetOrder`.
+```javascript
+constructor(productId: string, categoryId: string);
+```
+
+##### ACPTargetParameters
+The Target extension exports a class `ACPTargetParameters`.
+```javascript
+constructor(parameters?: {string: string}, profileParameters?: {string: string}, product?: ACPTargetProduct, order?: ACPTargetOrder);
+```
+
+## Contributing
+See [CONTRIBUTING](CONTRIBUTING.md)
+
+## License
+See [LICENSE](LICENSE)

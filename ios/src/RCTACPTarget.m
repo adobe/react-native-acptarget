@@ -1,21 +1,19 @@
-/** ***********************************************************************
- *
- * Copyright 2019 Adobe
- * All Rights Reserved.
- *
- * NOTICE: All information contained herein is, and remains
- * the property of Adobe and its suppliers, if any. The intellectual
- * and technical concepts contained herein are proprietary to Adobe
- * and its suppliers and are protected by all applicable intellectual
- * property laws, including trade secret and copyright laws.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Adobe.
- */
+/*
+Copyright 2019 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+*/
 
 #import "RCTACPTarget.h"
-#import "RCTACPTargetDataBridge.h"
 #import "ACPTarget.h"
+#import "ACPTargetRequestObject+RCTBridge.h"
+#import "ACPTargetParameters+RCTBridge.h"
+#import "ACPTargetPrefetchObject+RCTBridge.h"
 
 @implementation RCTACPTarget
 
@@ -50,45 +48,6 @@ RCT_EXPORT_METHOD(getTntId: (RCTPromiseResolveBlock) resolve rejecter:(RCTPromis
     }];
 }
 
-RCT_EXPORT_METHOD(loadRequests: (nonnull NSArray<NSDictionary*>*) requests
-                  withProfileParameters: (nullable NSDictionary*) profileParameters) {
-    NSMutableArray *requestObjectArr = [NSMutableArray array];
-    for (NSDictionary *requestDict in requests) {
-        ACPTargetRequestObject *requestObj = [RCTACPTargetDataBridge requestObjectFromDict:requestDict];
-        [requestObjectArr addObject:requestObj];
-    }
-    
-    [ACPTarget loadRequests:requestObjectArr withProfileParameters:profileParameters];
-}
-
-RCT_EXPORT_METHOD(prefetchContent: (nonnull NSArray<NSDictionary*>*) prefetchObjectArray
-                  withProfileParameters: (nullable NSDictionary*) profileParameters
-                  resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    
-    NSMutableArray *prefetchObjectArr = [NSMutableArray array];
-    for (NSDictionary *prefetchDict in prefetchObjectArray) {
-        ACPTargetPrefetchObject *prefetchObj = [RCTACPTargetDataBridge prefetchObjectFromDict:prefetchDict];
-        [prefetchObjectArr addObject:prefetchObj];
-    }
-    
-    [ACPTarget prefetchContent:prefetchObjectArr withProfileParameters:profileParameters callback:^(BOOL success) {
-        resolve(@(success));
-    }];
-}
-
-RCT_EXPORT_METHOD(locationClicked: (nonnull NSString*) name
-                  mboxParameters: (nullable NSDictionary*) mboxParameters
-                  productParameters: (nullable NSDictionary*) productParameters
-                  orderParameters: (nullable NSDictionary*) orderParameters
-                  profileParameters: (nullable NSDictionary*) profileParameters) {
-    [ACPTarget locationClickedWithName:name
-                        mboxParameters:mboxParameters
-                     productParameters:productParameters
-                       orderParameters:orderParameters
-                     profileParameters:profileParameters];
-    
-}
-
 RCT_EXPORT_METHOD(resetExperience) {
     [ACPTarget resetExperience];
 }
@@ -106,5 +65,52 @@ RCT_EXPORT_METHOD(setThirdPartyId: (nonnull NSString*) thirdPartyId) {
     [ACPTarget setThirdPartyId:thirdPartyId];
 }
 
+RCT_EXPORT_METHOD(retrieveLocationContent: (nonnull NSArray*) requests
+                  withParameters: (nullable NSDictionary*) parameters) {
+    
+    NSMutableArray *requestsArr = [NSMutableArray array];
+    for (NSDictionary *requestDict in requests) {
+        ACPTargetRequestObject *obj = [ACPTargetRequestObject targetRequestObjectFromDict:requestDict];
+        [requestsArr addObject:obj];
+    }
+    
+    ACPTargetParameters *parametersObj = [ACPTargetParameters targetParametersFromDict:parameters];
+
+    [ACPTarget retrieveLocationContent:requestsArr withParameters:parametersObj];
+}
+
+RCT_EXPORT_METHOD(prefetchContent: (nonnull NSArray*) prefetchObjectArray
+                  withParameters: (nullable NSDictionary*) parameters
+                        resolver:(RCTPromiseResolveBlock) resolve
+                        rejecter:(RCTPromiseRejectBlock)reject) {
+    NSMutableArray *prefetchObjArray = [NSMutableArray array];
+    for (NSDictionary *prefetchDict in prefetchObjArray) {
+        ACPTargetPrefetchObject *obj = [ACPTargetPrefetchObject prefetchObjectFromDict:prefetchDict];
+        [prefetchObjArray addObject:obj];
+    }
+    
+    ACPTargetParameters *parametersObj = [ACPTargetParameters targetParametersFromDict:parameters];
+    
+    [ACPTarget prefetchContent:prefetchObjArray withParameters:parametersObj callback:^(NSError * _Nullable error) {
+        if (error) {
+            NSString *errorCode = [NSString stringWithFormat:@"%ld", (long)error.code];
+            reject(errorCode, [error localizedDescription], error);
+        } else {
+            resolve(@(YES));
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(locationsDisplayed: (nonnull NSArray*) mboxNames
+                  withTargetParameters: (nullable NSDictionary*) parameters) {
+    ACPTargetParameters *parametersObj = [ACPTargetParameters targetParametersFromDict:parameters];
+    [ACPTarget locationsDisplayed:mboxNames withTargetParameters:parametersObj];
+}
+
+RCT_EXPORT_METHOD(locationClickedWithName: (nonnull NSString*) name
+                  targetParameters: (nullable NSDictionary*) parameters) {
+    ACPTargetParameters *parametersObj = [ACPTargetParameters targetParametersFromDict:parameters];
+    [ACPTarget locationClickedWithName:name targetParameters:parametersObj];
+}
+
 @end
-  
