@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-EXTENSION_NAME=react-native-acpanalytics
+EXTENSION_NAME=react-native-acptarget
 
 echo 'Installing npm packages'
 npm install
