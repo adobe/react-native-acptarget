@@ -84,7 +84,8 @@ RCT_EXPORT_METHOD(prefetchContent: (nonnull NSArray*) prefetchObjectArray
                         resolver:(RCTPromiseResolveBlock) resolve
                         rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableArray *prefetchObjArray = [NSMutableArray array];
-    for (NSDictionary *prefetchDict in prefetchObjArray) {
+    
+    for (NSDictionary *prefetchDict in prefetchObjectArray) {
         ACPTargetPrefetchObject *obj = [ACPTargetPrefetchObject prefetchObjectFromDict:prefetchDict];
         [prefetchObjArray addObject:obj];
     }
