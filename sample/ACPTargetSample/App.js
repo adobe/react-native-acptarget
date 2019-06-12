@@ -92,9 +92,9 @@ export default class App extends Component<Props> {
     var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
     var targetProduct = new ACPTargetProduct("24D3412", "Books");
     var parameters1 = new ACPTargetParameters(mboxParameters1, null, null, null);
-    var request1 = new ACPTargetRequestObject("mboxName2", parameters1, "defaultContent1");
+    var request1 = new ACPTargetRequestObject("clickTestRyan", parameters1, "defaultContent1");
 
-    var parameters2 = new ACPTargetParameters(mboxParameters1, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
+    var parameters2 = new ACPTargetParameters(mboxParameters2, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
     var request2 = new ACPTargetRequestObject("mboxName2", parameters2, "defaultContent2");
 
     var locationRequests = [request1, request2];
@@ -112,7 +112,7 @@ export default class App extends Component<Props> {
     var profileParameters1 = {"ageGroup": "20-32"};
     var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
 
-    ACPTarget.locationsDisplayed(["locationName", "locationName1"], parameters);
+    ACPTarget.locationsDisplayed(["clickTestRyan", "clickTestRyan"], null);
   }
 
   locationClickedWithName() {
@@ -123,7 +123,7 @@ export default class App extends Component<Props> {
     var profileParameters1 = {"ageGroup": "20-32"};
     var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profileParameters1, targetProduct, targetOrder);
 
-    ACPTarget.locationClickedWithName("locationName", parameters);
+    ACPTarget.locationClickedWithName("clickTestRyan", parameters);
   }
 
   prefetchContent() {
@@ -134,9 +134,9 @@ export default class App extends Component<Props> {
     var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
     var targetProduct = new ACPTargetProduct("24D3412", "Books");
     var parameters1 = new ACPTargetParameters(mboxParameters1, null, null, null);
-    var prefetch1 = new ACPTargetPrefetchObject("mboxName2", parameters1);
+    var prefetch1 = new ACPTargetPrefetchObject("clickTestRyan", parameters1);
 
-    var parameters2 = new ACPTargetParameters(mboxParameters1, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
+    var parameters2 = new ACPTargetParameters(mboxParameters2, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
     var prefetch2 = new ACPTargetPrefetchObject("mboxName2", parameters2);
 
     var prefetchList = [prefetch1, prefetch2];
