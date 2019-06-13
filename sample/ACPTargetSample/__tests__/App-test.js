@@ -11,8 +11,13 @@ governing permissions and limitations under the License.
 @format
 */
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
+import 'react-native';
+import React from 'react';
+import App from '../App';
 
-AppRegistry.registerComponent(appName, () => App);
+// Note: test renderer must be required after react-native.
+import renderer from 'react-test-renderer';
+
+it('renders correctly', () => {
+  renderer.create(<App />);
+});
