@@ -8,11 +8,18 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
+package com.acptargetsample;
 
-#import <UIKit/UIKit.h>
+import com.facebook.react.ReactActivity;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+public class MainActivity extends ReactActivity {
 
-@property (nonatomic, strong) UIWindow *window;
-
-@end
+    /**
+     * Returns the name of the main component registered from JavaScript.
+     * This is used to schedule rendering of the component.
+     */
+    @Override
+    protected String getMainComponentName() {
+        return "ACPTargetSample";
+    }
+}

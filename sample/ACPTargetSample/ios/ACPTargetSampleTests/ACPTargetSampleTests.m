@@ -8,6 +8,7 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
+
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
@@ -17,11 +18,11 @@ governing permissions and limitations under the License.
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface ACPCoreSampleTests : XCTestCase
+@interface ACPTargetSampleTests : XCTestCase
 
 @end
 
-@implementation ACPCoreSampleTests
+@implementation ACPTargetSampleTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
