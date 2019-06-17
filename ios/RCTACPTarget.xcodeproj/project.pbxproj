@@ -7,27 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21A76BD0226F7E870004001E /* ACPTarget.h in Headers */ = {isa = PBXBuildFile; fileRef = 21DD98D3225E422100376DF6 /* ACPTarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		21A76BD1226F7E870004001E /* ACPTargetPrefetchObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 21DD98D1225E422100376DF6 /* ACPTargetPrefetchObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		21A76BD2226F7E870004001E /* ACPTargetRequestObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 21DD98D2225E422100376DF6 /* ACPTargetRequestObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21A76BD4226F7E990004001E /* ACPTarget.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21DD98D3225E422100376DF6 /* ACPTarget.h */; };
 		21A76BD5226F7E990004001E /* ACPTargetPrefetchObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21DD98D1225E422100376DF6 /* ACPTargetPrefetchObject.h */; };
 		21A76BD6226F7E990004001E /* ACPTargetRequestObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21DD98D2225E422100376DF6 /* ACPTargetRequestObject.h */; };
-		21A8F64F229DB11D0048DBBC /* ACPTargetOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = 21A8F64C229DB11D0048DBBC /* ACPTargetOrder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		21A8F650229DB11D0048DBBC /* ACPTargetProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 21A8F64D229DB11D0048DBBC /* ACPTargetProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		21A8F651229DB11D0048DBBC /* ACPTargetParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 21A8F64E229DB11D0048DBBC /* ACPTargetParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21A8F652229DB13B0048DBBC /* ACPTargetOrder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21A8F64C229DB11D0048DBBC /* ACPTargetOrder.h */; };
 		21A8F653229DB13B0048DBBC /* ACPTargetParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21A8F64E229DB11D0048DBBC /* ACPTargetParameters.h */; };
 		21A8F654229DB13B0048DBBC /* ACPTargetProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21A8F64D229DB11D0048DBBC /* ACPTargetProduct.h */; };
-		21A8F65D229DC0680048DBBC /* ACPTargetRequestObject+RCTBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 21A8F65B229DC0680048DBBC /* ACPTargetRequestObject+RCTBridge.h */; };
 		21A8F65E229DC0680048DBBC /* ACPTargetRequestObject+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A8F65C229DC0680048DBBC /* ACPTargetRequestObject+RCTBridge.m */; };
-		21A8F661229DC1360048DBBC /* ACPTargetParameters+RCTBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 21A8F65F229DC1360048DBBC /* ACPTargetParameters+RCTBridge.h */; };
 		21A8F662229DC1360048DBBC /* ACPTargetParameters+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A8F660229DC1360048DBBC /* ACPTargetParameters+RCTBridge.m */; };
-		21A8F665229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 21A8F663229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.h */; };
 		21A8F666229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A8F664229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.m */; };
-		21B741EE229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 21B741EC229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.h */; };
 		21B741EF229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B741ED229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.m */; };
-		21B741F2229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 21B741F0229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.h */; };
 		21B741F3229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B741F1229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.m */; };
 		21DD98D5225E422700376DF6 /* libACPTarget_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21DD98D4225E422700376DF6 /* libACPTarget_iOS.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RCTACPTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RCTACPTarget.m */; };
@@ -146,33 +135,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		21A76BCF226F7E7E0004001E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21A76BD0226F7E870004001E /* ACPTarget.h in Headers */,
-				21A76BD1226F7E870004001E /* ACPTargetPrefetchObject.h in Headers */,
-				21A8F64F229DB11D0048DBBC /* ACPTargetOrder.h in Headers */,
-				21A8F650229DB11D0048DBBC /* ACPTargetProduct.h in Headers */,
-				21A8F651229DB11D0048DBBC /* ACPTargetParameters.h in Headers */,
-				21A8F661229DC1360048DBBC /* ACPTargetParameters+RCTBridge.h in Headers */,
-				21B741F2229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.h in Headers */,
-				21A76BD2226F7E870004001E /* ACPTargetRequestObject.h in Headers */,
-				21A8F665229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.h in Headers */,
-				21B741EE229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.h in Headers */,
-				21A8F65D229DC0680048DBBC /* ACPTargetRequestObject+RCTBridge.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		58B511DA1A9E6C8500147676 /* RCTACPTarget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RCTACPTarget" */;
 			buildPhases = (
-				21A76BCF226F7E7E0004001E /* Headers */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
