@@ -44,7 +44,7 @@ export default class App extends Component<Props> {
 
   initSDK() {
     ACPCore.setLogLevel(ACPMobileLogLevel.VERBOSE);
-    ACPCore.configureWithAppId("launch-EN1415e24e288342f58e3caf6271cd34aa-development");
+    ACPCore.configureWithAppId("yourAppId");
     ACPLifecycle.registerExtension();
     ACPIdentity.registerExtension();
     ACPSignal.registerExtension();
