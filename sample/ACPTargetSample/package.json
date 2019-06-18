@@ -18,13 +18,14 @@
     "react": "16.6.3",
     "react-native": "0.58.3",
     "@adobe/react-native-acpcore": "^1.0.4",
-    "@adobe/react-native-acptarget": "git+ssh://git@git.corp.adobe.com:dms-mobile/bourbon-platform-react-native-target.git"
+    "@adobe/react-native-acptarget": "1.0.0-alpha"
   },
   "devDependencies": {
     "babel-jest": "16.0.0",
     "babel-preset-react-native": "1.9.0",
     "jest": "16.0.2",
     "jest-react-native": "16.0.0",
+    "metro-react-native-babel-preset": "^0.54.1",
     "react-test-renderer": "15.3.2"
   },
   "jest": {
