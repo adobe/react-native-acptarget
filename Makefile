@@ -19,7 +19,7 @@ build-sample-android:
 	(cd sample/ACP*Sample/android && ./gradlew assembleRelease)
 
 build-sample-ios:
-	(cd sample/ACP*Sample/ios && xcodebuild build -project ACPCoreSample.xcodeproj -scheme ACPCoreSample CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGNING_ALLOWED="NO")
+	(cd sample/ACP*Sample/ios && xcodebuild build -project ACPTargetSample.xcodeproj -scheme ACPTargetSample CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGNING_ALLOWED="NO")
 
 run-tests:
 	jest --testPathIgnorePatterns sample/ node_modules/ --modulePathIgnorePatterns sample/ --runInBand
@@ -30,7 +30,7 @@ run-tests-locally: setup
 copy-to-sample:
 	cd sample/ACP*Sample/ && sh copy-changes-to-sample.sh
 
-	# fetches the latest iOS & Android SDK and put them in the project
+# fetches the latest iOS & Android SDK and put them in the project
 update-libs:
 	rm -rf acp-sdks # clean if needed
 	git clone https://github.com/Adobe-Marketing-Cloud/acp-sdks
