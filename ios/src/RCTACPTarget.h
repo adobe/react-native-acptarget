@@ -9,13 +9,9 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-#if __has_include("RCTBridgeModule.h")
-#import "RCTBridgeModule.h"
-#import "RCTUtils.h"
-#else
 #import <React/RCTBridgeModule.h>
 #import <React/RCTUtils.h>
-#endif
+#import <Foundation/Foundation.h>
 
 @interface RCTACPTarget : NSObject <RCTBridgeModule>
 
