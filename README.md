@@ -25,8 +25,28 @@ Install and link the `@adobe/react-native-acptarget` package:
 ```bash
 cd MyReactApp
 npm install @adobe/react-native-acptarget
-react-native link @adobe/react-native-acptarget
 ```
+
+#### 2.1 Link
+- **React Native 0.60+**
+
+
+[CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) links the module while building the app.
+
+
+- **React Native <= 0.59**
+
+
+```bash
+$ react-native link react-native-acptarget
+```
+
+*Note* For `iOS` using `cocoapods`, run:
+
+```bash
+$ cd ios/ && pod install
+```
+
 
 ## Tests
 This project contains jest unit tests which are contained in the `__tests__` directory, to run the tests locally:
