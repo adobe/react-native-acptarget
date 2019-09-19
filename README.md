@@ -75,31 +75,31 @@ ACPTarget.extensionVersion().then(version => console.log("AdobeExperienceSDK: AC
 ACPTarget.registerExtension();
 ```
 
-##### Get custom visitor IDs
+##### Get custom visitor IDs:
 
 ```javascript
 ACPTarget.getThirdPartyId().then(id => console.log("AdobeExperienceSDK: Third Party ID: " + id));
 ```
 
-##### Set custom visitor IDs
+##### Set custom visitor IDs:
 
 ```javascript
 ACPTarget.setThirdPartyId("thirdPartyId");
 ```
 
-##### Reset user experience
+##### Reset user experience:
 
 ```javascript
 ACPTarget.resetExperience();
 ```
 
-##### Get Target user identifier
+##### Get Target user identifier:
 
 ```javascript
 ACPTarget.getTntId().then(id => console.log("AdobeExperienceSDK: TNT ID " + id));
 ```
 
-##### Load Target requests
+##### Load Target requests:
 
 ```javascript
 var mboxParameters1 = {"status": "platinum"};
@@ -121,7 +121,7 @@ var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profi
 ACPTarget.retrieveLocationContent(locationRequests, parameters);
 ```
 
-##### Using the prefetch APIs
+##### Using the prefetch APIs:
 
 ```javascript
 var mboxParameters1 = {"status": "platinum"};
@@ -143,13 +143,13 @@ var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profi
 ACPTarget.prefetchContent(prefetchList, parameters).then(success => console.log(success)).catch(err => console.log(err));
 ```
 
-##### Set preview restart deep link
+##### Set preview restart deep link:
 
 ```javascript
 ACPTarget.setPreviewRestartDeeplink("https://www.adobe.com");
 ```
 
-##### Send an mbox click notification
+##### Send an mbox click notification:
 
 ```javascript
 var purchaseIDs = ["34","125"];
@@ -162,7 +162,7 @@ var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profi
 ACPTarget.locationClickedWithName("locationName", parameters);
 ```
 
-##### Send an mbox location displayed notification
+##### Send an mbox location displayed notification:
 ```javascript
 var purchaseIDs = ["34","125"];
 
@@ -174,7 +174,7 @@ var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profi
 ACPTarget.locationsDisplayed(["locationName", "locationName1"], parameters);
 ```
 
-##### ACPTargetPrefetchObject
+##### ACPTargetPrefetchObject:
 The Target extension exports a class `ACPTargetPrefetchObject`.
 
 ```javascript
@@ -182,25 +182,25 @@ constructor(name?: string, targetParameters?: ACPTargetParameters);
 ```
 
 
-##### ACPTargetRequestObject
+##### ACPTargetRequestObject:
 The Target extension exports a class `ACPTargetRequestObject`, which extends `ACPTargetPrefetchObject`.
 ```javascript
 constructor(name: string, targetParameters: ACPTargetParameters, defaultContent: string);
 ```
 
-##### ACPTargetOrder
+##### ACPTargetOrder:
 The Target extension exports a class `ACPTargetOrder`.
 ```javascript
 constructor(orderId: string, total?: number, purchasedProductIds: Array<string>);
 ```
 
-##### ACPTargetProduct
+##### ACPTargetProduct:
 The Target extension exports a class `ACPTargetOrder`.
 ```javascript
 constructor(productId: string, categoryId: string);
 ```
 
-##### ACPTargetParameters
+##### ACPTargetParameters:
 The Target extension exports a class `ACPTargetParameters`.
 ```javascript
 constructor(parameters?: {string: string}, profileParameters?: {string: string}, product?: ACPTargetProduct, order?: ACPTargetOrder);
