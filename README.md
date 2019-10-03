@@ -38,13 +38,13 @@ npm install @adobe/react-native-acptarget
 
 
 ```bash
-$ react-native link @adobe/react-native-acptarget
+react-native link @adobe/react-native-acptarget
 ```
 
 *Note* For `iOS` using `cocoapods`, run:
 
 ```bash
-$ cd ios/ && pod install
+cd ios/ && pod install
 ```
 
 
