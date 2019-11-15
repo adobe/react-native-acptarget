@@ -74,7 +74,6 @@ RCT_EXPORT_METHOD(retrieveLocationContent: (nonnull NSArray*) requests
         
         if (_registeredTargetRequests[identifier]) {
             [requestsArr addObject:_registeredTargetRequests[identifier]];
-            [_registeredTargetRequests removeObjectForKey:identifier];
         }
     }
     
