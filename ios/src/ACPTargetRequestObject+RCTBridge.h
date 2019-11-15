@@ -13,7 +13,7 @@
 
 @interface ACPTargetRequestObject (RCTBridge)
 
-+ (ACPTargetRequestObject *)targetRequestObjectFromDict:(NSDictionary *) dict;
++ (ACPTargetRequestObject *)targetRequestObjectFromDict:(NSDictionary *) dict callback: (nullable void (^) (NSString* __nullable content)) callback;
 
 @end
 

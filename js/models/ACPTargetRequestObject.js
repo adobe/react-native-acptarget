@@ -15,13 +15,17 @@ governing permissions and limitations under the License.
 
 import ACPTargetPrefetchObject from './ACPTargetPrefetchObject';
 import ACPTargetParameters from './ACPTargetParameters';
+const RCTACPTarget = require('react-native').NativeModules.ACPTarget;
 
 class ACPTargetRequestObject extends ACPTargetPrefetchObject {
   defaultContent:   string;
+  id: string;
 
-  constructor(name: string, targetParameters: ACPTargetParameters, defaultContent: string) {
+  constructor(name: string, targetParameters: ACPTargetParameters, defaultContent: string, callback: (error: Error | null, content: string | null) => void) {
     super(name, targetParameters);
     this.defaultContent = defaultContent;
+    this.id = '_' + Math.random().toString(36).substr(2, 9);
+    RCTACPTarget.registerTargetRequests(this, callback);
   }
 }
 
