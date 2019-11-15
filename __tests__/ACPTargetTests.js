@@ -74,10 +74,22 @@ describe('ACPTarget', () => {
     var targetOrder = new ACPTargetOrder("ADCKKIM", 344.30, purchaseIDs);
     var targetProduct = new ACPTargetProduct("24D3412", "Books");
     var parameters1 = new ACPTargetParameters(mboxParameters1, null, null, null);
-    var request1 = new ACPTargetRequestObject("mboxName2", parameters1, "defaultContent1");
+    var request1 = new ACPTargetRequestObject("mboxName2", parameters1, "defaultContent1", (error, content) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log("Adobe content:" + content);
+      }
+    });
 
     var parameters2 = new ACPTargetParameters(mboxParameters1, {"profileParameters": "parameterValue"}, targetProduct, targetOrder);
-    var request2 = new ACPTargetRequestObject("mboxName2", parameters2, "defaultContent2");
+    var request2 = new ACPTargetRequestObject("mboxName2", parameters2, "defaultContent2", (error, content) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log("Adobe content:" + content);
+      }
+    });
 
     var locationRequests = [request1, request2];
     var profileParameters1 = {"ageGroup": "20-32"};
