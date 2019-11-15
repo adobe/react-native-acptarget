@@ -25,14 +25,17 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.Callback;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 
 public class RCTACPTargetModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
+  private final String REQUEST_ID_KEY = "id";
+  private HashMap<String, TargetRequest> registeredTargetRequests = new HashMap<>();
 
   public RCTACPTargetModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -113,8 +116,11 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
   public void retrieveLocationContent(ReadableArray targetRequestList, ReadableMap parameters) {
     ArrayList<TargetRequest> requestList = new ArrayList<>();
     for (int i = 0; i < targetRequestList.size(); i++) {
-      TargetRequest request = RCTACPTargetDataBridge.mapToRequest(targetRequestList.getMap(i));
-      requestList.add(request);
+      String identifier = targetRequestList.getMap(i).getString(REQUEST_ID_KEY);
+
+      if (registeredTargetRequests.containsKey(identifier)) {
+        requestList.add(registeredTargetRequests.get(identifier));
+      }
     }
 
     TargetParameters parametersObj = RCTACPTargetDataBridge.mapToParameters(parameters);
@@ -158,7 +164,12 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
         promise.resolve(s);
       }
     });
+  }
 
+  @ReactMethod
+  public void registerTargetRequests(ReadableMap requestMap, Callback successCallback) {
+    TargetRequest request = RCTACPTargetDataBridge.mapToRequest(requestMap, successCallback);
+    registeredTargetRequests.put(requestMap.getString(REQUEST_ID_KEY), request);
   }
 
 }

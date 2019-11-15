@@ -11,11 +11,13 @@ governing permissions and limitations under the License.
 
 package com.adobe.marketing.mobile.reactnative.target;
 
+import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.TargetOrder;
 import com.adobe.marketing.mobile.TargetParameters;
 import com.adobe.marketing.mobile.TargetPrefetch;
 import com.adobe.marketing.mobile.TargetProduct;
 import com.adobe.marketing.mobile.TargetRequest;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 
@@ -49,13 +51,18 @@ public class RCTACPTargetDataBridge {
         return new TargetPrefetch(getNullableString(map, NAME_KEY), parameters);
     }
 
-    public static TargetRequest mapToRequest(ReadableMap map) {
+    public static TargetRequest mapToRequest(ReadableMap map, final Callback successCallback) {
         if (map == null) {
             return null;
         }
 
         TargetParameters parameters = mapToParameters(getNullableMap(map, TARGET_PARAMETERS_KEY));
-        return new TargetRequest(getNullableString(map, NAME_KEY), parameters, getNullableString(map, DEFAULT_CONTENT_KEY), null);
+        return new TargetRequest(getNullableString(map, NAME_KEY), parameters, getNullableString(map, DEFAULT_CONTENT_KEY), new AdobeCallback<String>() {
+            @Override
+            public void call(String content) {
+                successCallback.invoke(null, content);
+            }
+        });
     }
 
     public static TargetParameters mapToParameters(ReadableMap map) {
@@ -110,4 +117,3 @@ public class RCTACPTargetDataBridge {
 
 
 }
-
