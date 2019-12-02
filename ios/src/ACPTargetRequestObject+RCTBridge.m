@@ -18,16 +18,16 @@ NSString *const REQUEST_NAME_KEY = @"name";
 NSString *const REQUEST_PARAMETERS_KEY = @"targetParameters";
 NSString *const DEFAULT_CONTENT_KEY = @"defaultContent";
 
-+ (ACPTargetRequestObject *)targetRequestObjectFromDict:(NSDictionary *) dict {
++ (ACPTargetRequestObject *)targetRequestObjectFromDict:(NSDictionary *) dict callback: (nullable void (^) (NSString* __nullable content)) callback {
     if (!dict || [dict isEqual:[NSNull null]]) {
         return nil;
     }
-    
+
     ACPTargetParameters *parameters = [ACPTargetParameters targetParametersFromDict:dict[REQUEST_PARAMETERS_KEY]];
     return [ACPTargetRequestObject targetRequestObjectWithName:dict[REQUEST_NAME_KEY]
                                               targetParameters:parameters
                                                 defaultContent:dict[DEFAULT_CONTENT_KEY]
-                                                      callback:nil];
+                                                      callback:callback];
 }
 
 @end

@@ -70,8 +70,11 @@ RCT_EXPORT_METHOD(retrieveLocationContent: (nonnull NSArray*) requests
     
     NSMutableArray *requestsArr = [NSMutableArray array];
     for (NSDictionary *requestDict in requests) {
-        ACPTargetRequestObject *obj = [ACPTargetRequestObject targetRequestObjectFromDict:requestDict];
-        [requestsArr addObject:obj];
+        NSString *identifier = requestDict[@"id"];
+        
+        if (_registeredTargetRequests[identifier]) {
+            [requestsArr addObject:_registeredTargetRequests[identifier]];
+        }
     }
     
     ACPTargetParameters *parametersObj = [ACPTargetParameters targetParametersFromDict:parameters];
@@ -112,6 +115,18 @@ RCT_EXPORT_METHOD(locationClickedWithName: (nonnull NSString*) name
                   targetParameters: (nullable NSDictionary*) parameters) {
     ACPTargetParameters *parametersObj = [ACPTargetParameters targetParametersFromDict:parameters];
     [ACPTarget locationClickedWithName:name targetParameters:parametersObj];
+}
+
+RCT_EXPORT_METHOD(registerTargetRequests: (nonnull NSDictionary*) requestDict callback:(RCTResponseSenderBlock) callback) {
+    ACPTargetRequestObject *obj = [ACPTargetRequestObject targetRequestObjectFromDict:requestDict callback:^(NSString * _Nullable content) {
+        callback(@[[NSNull null], content]);
+    }];
+    
+    if (!_registeredTargetRequests) {
+        _registeredTargetRequests = [NSMutableDictionary dictionary];
+    }
+    
+    _registeredTargetRequests[requestDict[@"id"]] = obj;
 }
 
 @end

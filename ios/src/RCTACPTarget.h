@@ -15,4 +15,6 @@ governing permissions and limitations under the License.
 
 @interface RCTACPTarget : NSObject <RCTBridgeModule>
 
+@property(nonatomic, strong)NSMutableDictionary* registeredTargetRequests;
+
 @end

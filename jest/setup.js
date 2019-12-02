@@ -23,6 +23,7 @@ jest.mock('NativeModules', () => ({
     retrieveLocationContent: jest.fn(),
     prefetchContent: jest.fn(() => new Promise(resolve => resolve())),
     locationsDisplayed: jest.fn(),
-    locationClickedWithName: jest.fn()
-  }
+    locationClickedWithName: jest.fn(),
+    registerTargetRequests: jest.fn()
+  },
 }));
