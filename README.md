@@ -89,7 +89,10 @@ import com.adobe.marketing.mobile.Target;
 Target.registerExtension();
 ```
 
+##### **Javascript:**
 ```javascript
+import {ACPTarget} from '@adobe/react-native-acptarget';
+
 ACPTarget.registerExtension();
 ```
 
