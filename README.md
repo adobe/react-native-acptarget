@@ -1,6 +1,11 @@
 
 # React Native AEP Target Extension
 
+[![npm version](https://badge.fury.io/js/%40adobe%2Freact-native-acptarget.svg)](https://www.npmjs.com/package/@adobe/react-native-acptarget) 
+[![npm downloads](https://img.shields.io/npm/dm/@adobe/react-native-acptarget)](https://www.npmjs.com/package/@adobe/react-native-acptarget)
+[![CircleCI](https://img.shields.io/circleci/project/github/adobe/react-native-acptarget/main.svg?logo=circleci)](https://circleci.com/gh/adobe/workflows/react-native-acptarget) 
+[![license](https://img.shields.io/npm/l/@adobe/react-native-acptarget.svg)](https://github.com/adobe/react-native-acptarget/blob/main/LICENSE)
+
 [![npm version](https://badge.fury.io/js/%40adobe%2Freact-native-acptarget.svg)](https://badge.fury.io/js/%40adobe%2Freact-native-acptarget) ![npm](https://img.shields.io/npm/dm/@adobe/react-native-acptarget) [![CircleCI](https://img.shields.io/circleci/project/github/adobe/react-native-acptarget/master.svg?logo=circleci)](https://circleci.com/gh/adobe/workflows/react-native-acptarget) ![NPM](https://img.shields.io/npm/l/@adobe/react-native-acptarget.svg)
 
 `@adobe/react-native-acptarget` is a wrapper around the iOS and Android [AEP Target SDK](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/adobe-target) to allow for integration with React Native applications. Functionality to enable Adobe Target is provided entirely through JavaScript documented below.
