@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@adobe/react-native-acpcore": "github:adobe/react-native-acpcore#xcframeworks-release",
+    "@adobe/react-native-acpcore": "^1.5.0",
     "@adobe/react-native-acptarget": "^1.2.0",
     "graceful-fs": "4.2.2",
     "@babel/runtime": "^7.0.0",
