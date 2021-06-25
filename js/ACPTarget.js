@@ -70,13 +70,6 @@ module.exports = {
   },
 
   /**
-   * @brief Registers the ACPTarget extension with the Core Event Hub.
-   */
-  registerExtension() {
-    RCTACPTarget.registerExtension();
-  },
-
-  /**
    *  @brief Resets the user's experience
    *
    *  Resets the user's experience by removing the visitor identifiers.

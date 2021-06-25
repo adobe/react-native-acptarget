@@ -3,20 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02D3886A978C66AB4C201569 /* libPods-RCTACPTarget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64CF25F3DE7D021B5E42169 /* libPods-RCTACPTarget.a */; };
 		21A8F65E229DC0680048DBBC /* ACPTargetRequestObject+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A8F65C229DC0680048DBBC /* ACPTargetRequestObject+RCTBridge.m */; };
 		21A8F662229DC1360048DBBC /* ACPTargetParameters+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A8F660229DC1360048DBBC /* ACPTargetParameters+RCTBridge.m */; };
 		21A8F666229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A8F664229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.m */; };
-		21B62908259027060039CE4D /* ACPTarget.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B62907259027060039CE4D /* ACPTarget.xcframework */; };
-		21B62910259027230039CE4D /* ACPTarget.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B6290F259027130039CE4D /* ACPTarget.h */; };
-		21B62911259027230039CE4D /* ACPTargetOrder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B6290E259027130039CE4D /* ACPTargetOrder.h */; };
-		21B62912259027230039CE4D /* ACPTargetParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B6290B259027130039CE4D /* ACPTargetParameters.h */; };
-		21B62913259027230039CE4D /* ACPTargetPrefetchObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B6290C259027130039CE4D /* ACPTargetPrefetchObject.h */; };
-		21B62914259027230039CE4D /* ACPTargetProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B6290A259027130039CE4D /* ACPTargetProduct.h */; };
-		21B62915259027230039CE4D /* ACPTargetRequestObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B6290D259027130039CE4D /* ACPTargetRequestObject.h */; };
 		21B741EF229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B741ED229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.m */; };
 		21B741F3229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B741F1229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RCTACPTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RCTACPTarget.m */; };
@@ -29,12 +23,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				21B62910259027230039CE4D /* ACPTarget.h in CopyFiles */,
-				21B62911259027230039CE4D /* ACPTargetOrder.h in CopyFiles */,
-				21B62912259027230039CE4D /* ACPTargetParameters.h in CopyFiles */,
-				21B62913259027230039CE4D /* ACPTargetPrefetchObject.h in CopyFiles */,
-				21B62914259027230039CE4D /* ACPTargetProduct.h in CopyFiles */,
-				21B62915259027230039CE4D /* ACPTargetRequestObject.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,19 +36,15 @@
 		21A8F660229DC1360048DBBC /* ACPTargetParameters+RCTBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ACPTargetParameters+RCTBridge.m"; path = "src/ACPTargetParameters+RCTBridge.m"; sourceTree = "<group>"; };
 		21A8F663229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ACPTargetPrefetchObject+RCTBridge.h"; path = "src/ACPTargetPrefetchObject+RCTBridge.h"; sourceTree = "<group>"; };
 		21A8F664229DC22B0048DBBC /* ACPTargetPrefetchObject+RCTBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ACPTargetPrefetchObject+RCTBridge.m"; path = "src/ACPTargetPrefetchObject+RCTBridge.m"; sourceTree = "<group>"; };
-		21B62907259027060039CE4D /* ACPTarget.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ACPTarget.xcframework; path = libs/ACPTarget.xcframework; sourceTree = "<group>"; };
-		21B6290A259027130039CE4D /* ACPTargetProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPTargetProduct.h; path = "libs/ACPTarget.xcframework/ios-arm64_armv7_armv7s/Headers/ACPTargetProduct.h"; sourceTree = "<group>"; };
-		21B6290B259027130039CE4D /* ACPTargetParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPTargetParameters.h; path = "libs/ACPTarget.xcframework/ios-arm64_armv7_armv7s/Headers/ACPTargetParameters.h"; sourceTree = "<group>"; };
-		21B6290C259027130039CE4D /* ACPTargetPrefetchObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPTargetPrefetchObject.h; path = "libs/ACPTarget.xcframework/ios-arm64_armv7_armv7s/Headers/ACPTargetPrefetchObject.h"; sourceTree = "<group>"; };
-		21B6290D259027130039CE4D /* ACPTargetRequestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPTargetRequestObject.h; path = "libs/ACPTarget.xcframework/ios-arm64_armv7_armv7s/Headers/ACPTargetRequestObject.h"; sourceTree = "<group>"; };
-		21B6290E259027130039CE4D /* ACPTargetOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPTargetOrder.h; path = "libs/ACPTarget.xcframework/ios-arm64_armv7_armv7s/Headers/ACPTargetOrder.h"; sourceTree = "<group>"; };
-		21B6290F259027130039CE4D /* ACPTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPTarget.h; path = "libs/ACPTarget.xcframework/ios-arm64_armv7_armv7s/Headers/ACPTarget.h"; sourceTree = "<group>"; };
 		21B741EC229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ACPTargetOrder+RCTBridge.h"; path = "src/ACPTargetOrder+RCTBridge.h"; sourceTree = "<group>"; };
 		21B741ED229F26B200CBC1F8 /* ACPTargetOrder+RCTBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ACPTargetOrder+RCTBridge.m"; path = "src/ACPTargetOrder+RCTBridge.m"; sourceTree = "<group>"; };
 		21B741F0229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ACPTargetProduct+RCTBridge.h"; path = "src/ACPTargetProduct+RCTBridge.h"; sourceTree = "<group>"; };
 		21B741F1229F275C00CBC1F8 /* ACPTargetProduct+RCTBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ACPTargetProduct+RCTBridge.m"; path = "src/ACPTargetProduct+RCTBridge.m"; sourceTree = "<group>"; };
+		65C1FC7F7DF194FE1C843ED0 /* Pods-RCTACPTarget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCTACPTarget.release.xcconfig"; path = "Target Support Files/Pods-RCTACPTarget/Pods-RCTACPTarget.release.xcconfig"; sourceTree = "<group>"; };
+		9C0134D5EE69BB3B8BE5A526 /* Pods-RCTACPTarget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCTACPTarget.debug.xcconfig"; path = "Target Support Files/Pods-RCTACPTarget/Pods-RCTACPTarget.debug.xcconfig"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RCTACPTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTACPTarget.h; path = src/RCTACPTarget.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RCTACPTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTACPTarget.m; path = src/RCTACPTarget.m; sourceTree = "<group>"; };
+		D64CF25F3DE7D021B5E42169 /* libPods-RCTACPTarget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RCTACPTarget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21B62908259027060039CE4D /* ACPTarget.xcframework in Frameworks */,
+				02D3886A978C66AB4C201569 /* libPods-RCTACPTarget.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,29 +84,34 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		21DD98D0225E420E00376DF6 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				21B62907259027060039CE4D /* ACPTarget.xcframework */,
-				21B6290F259027130039CE4D /* ACPTarget.h */,
-				21B6290E259027130039CE4D /* ACPTargetOrder.h */,
-				21B6290B259027130039CE4D /* ACPTargetParameters.h */,
-				21B6290C259027130039CE4D /* ACPTargetPrefetchObject.h */,
-				21B6290A259027130039CE4D /* ACPTargetProduct.h */,
-				21B6290D259027130039CE4D /* ACPTargetRequestObject.h */,
-			);
-			name = libs;
-			sourceTree = "<group>";
-		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
 				B3E7B5881CC2AC0600A0062D /* RCTACPTarget.h */,
 				B3E7B5891CC2AC0600A0062D /* RCTACPTarget.m */,
 				21A8F65A229DBEBD0048DBBC /* Extensions */,
-				21DD98D0225E420E00376DF6 /* libs */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				B9CB7E59F354E874AEA3333C /* Pods */,
+				ACEB536254DE37E2ED56B2FE /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		ACEB536254DE37E2ED56B2FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D64CF25F3DE7D021B5E42169 /* libPods-RCTACPTarget.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9CB7E59F354E874AEA3333C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C0134D5EE69BB3B8BE5A526 /* Pods-RCTACPTarget.debug.xcconfig */,
+				65C1FC7F7DF194FE1C843ED0 /* Pods-RCTACPTarget.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +121,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RCTACPTarget" */;
 			buildPhases = (
+				831E1B933B361E33E6E4C767 /* [CP] Check Pods Manifest.lock */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -176,6 +166,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		831E1B933B361E33E6E4C767 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RCTACPTarget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -277,6 +292,7 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C0134D5EE69BB3B8BE5A526 /* Pods-RCTACPTarget.debug.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -297,6 +313,7 @@
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65C1FC7F7DF194FE1C843ED0 /* Pods-RCTACPTarget.release.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
