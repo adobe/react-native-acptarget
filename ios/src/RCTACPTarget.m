@@ -28,10 +28,6 @@ RCT_EXPORT_METHOD(extensionVersion: (RCTPromiseResolveBlock) resolve rejecter:(R
     resolve([ACPTarget extensionVersion]);
 }
 
-RCT_EXPORT_METHOD(registerExtension) {
-    [ACPTarget registerExtension];
-}
-
 RCT_EXPORT_METHOD(clearPrefetchCache) {
     [ACPTarget clearPrefetchCache];
 }

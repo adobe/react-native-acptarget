@@ -53,15 +53,6 @@ public class RCTACPTargetModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void registerExtension() {
-    try {
-      Target.registerExtension();
-    } catch (InvalidInitException e) {
-      Log.d(getName(), "Registering Target extension failed with error: " + e.getMessage());
-    }
-  }
-
-  @ReactMethod
   public void clearPrefetchCache() {
     Target.clearPrefetchCache();
   }

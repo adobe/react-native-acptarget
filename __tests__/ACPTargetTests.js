@@ -27,12 +27,6 @@ describe('ACPTarget', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  test('registerExtension is called', async () => {
-    const spy = jest.spyOn(NativeModules.ACPTarget, 'registerExtension');
-    await ACPTarget.registerExtension();
-    expect(spy).toHaveBeenCalled();
-  });
-
   test('clearPrefetchCache is called', async () => {
     const spy = jest.spyOn(NativeModules.ACPTarget, 'clearPrefetchCache');
     await ACPTarget.clearPrefetchCache();
