@@ -1,3 +1,12 @@
+/*
+ Copyright 2021 Adobe
+ All Rights Reserved.
+ NOTICE: Adobe permits you to use, modify, and distribute this file in
+ accordance with the terms of the Adobe license agreement accompanying
+ it. If you have received this file from a source other than Adobe,
+ then your use, modification, or distribution of it requires the prior
+ written permission of Adobe. (See LICENSE-MIT for details)
+ */
 #import "AppDelegate.h"
 
 #import <React/RCTBridge.h>
@@ -56,7 +65,7 @@ static void InitializeFlipper(UIApplication *application) {
   
   //ACP Extensions Registration
   [ACPCore setLogLevel:ACPMobileLogLevelVerbose];
-  [ACPCore configureWithAppId:@"yourAppId"];
+  [ACPCore configureWithAppId:@"launch-ENc28aaf2fb6934cff830c8d3ddc5465b1-development"];
   [ACPCore setWrapperType:ACPMobileWrapperTypeReactNative];
   [ACPIdentity registerExtension];
   [ACPLifecycle registerExtension];
