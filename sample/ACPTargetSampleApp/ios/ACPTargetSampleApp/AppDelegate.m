@@ -67,7 +67,7 @@ static void InitializeFlipper(UIApplication *application) {
   
   //ACP Extensions Registration
   [ACPCore setLogLevel:ACPMobileLogLevelVerbose];
-  [ACPCore configureWithAppId:@"launch-ENc28aaf2fb6934cff830c8d3ddc5465b1-development"];
+  [ACPCore configureWithAppId:@"yourAppId"];
   [ACPCore setWrapperType:ACPMobileWrapperTypeReactNative];
   [ACPIdentity registerExtension];
   [ACPLifecycle registerExtension];
