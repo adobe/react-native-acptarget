@@ -65,7 +65,7 @@ ACPTarget.extensionVersion().then(version => console.log("AdobeExperienceSDK: AC
 
 #### Registering the extension with ACPCore:
 
-> Note: It is recommended to initialize the SDK via native code inside your AppDelegate and MainApplication in iOS and Android respectively. For more information see how to initialize [Core](https://github.com/adobe/react-native-acpcore#initializing-the-sdk).
+> Note: It is recommended to initialize the SDK via native code inside your AppDelegate and MainApplication in iOS and Android respectively.
 
 ##### **iOS**
 ```objective-c
