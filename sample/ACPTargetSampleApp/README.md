@@ -1,4 +1,4 @@
-# ACPTargetSample
+# ACPTargetSampleApp
 
 > Note: Commands are assuming you're in the root directory of the repository.
 
@@ -14,7 +14,7 @@ In `android/**/MainApplication.java`, find the call to `configureWithAppId` and 
 #### Run instructions for iOS:
 
 ```
-cd sample/ACPTargetSampleApp/ && npm install && react-native run-ios
+cd sample/ACPTargetSampleApp/ && npm install && cd ios/ && pod update && react-native run-ios
 ```
 
 > Note: If you see an error "Can't find simulator for "iPhoneX"", this is a known [issue](https://github.com/facebook/react-native/issues/23256) with React Native and you should try running the sample app inside of Xcode.
@@ -22,7 +22,7 @@ cd sample/ACPTargetSampleApp/ && npm install && react-native run-ios
 or
 
 ```
-cd sample/ACPTargetSampleApp/ && npm install
+cd sample/ACPTargetSampleApp/ && npm install && cd ios/ && pod update
 ```
 Then, open the Xcode project under the `ios` directory and hit run.
 
