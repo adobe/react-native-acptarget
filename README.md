@@ -33,18 +33,7 @@ npm install @adobe/react-native-acptarget
 ```
 
 #### 2.1 Link
-- **React Native 0.60+**
-
-
-[CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) links the module while building the app.
-
-
-- **React Native <= 0.59**
-
-
-```bash
-react-native link @adobe/react-native-acptarget
-```
+This package requires React Native 0.60+ to build which supports [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) to link the modules while building the app.
 
 *Note* For `iOS` using `cocoapods`, run:
 
@@ -63,20 +52,20 @@ make run-tests-locally
 
 ### [Target](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/adobe-target)
 
-##### Importing the extension:
+#### Importing the extension:
 ```javascript
 import {ACPTarget} from '@adobe/react-native-acptarget';
 ```
 
-##### Getting the extension version:
+#### Getting the extension version:
 
 ```javascript
 ACPTarget.extensionVersion().then(version => console.log("AdobeExperienceSDK: ACPTarget version: " + version));
 ```
 
-##### Registering the extension with ACPCore:
+#### Registering the extension with ACPCore:
 
-> Note: It is recommended to initialize the SDK via native code inside your AppDelegate and MainApplication in iOS and Android respectively. However, you can still initialize the SDK in Javascript. For more information see how to initialize [Core](https://github.com/adobe/react-native-acpcore#initializing-the-sdk). 
+> Note: It is recommended to initialize the SDK via native code inside your AppDelegate and MainApplication in iOS and Android respectively.
 
 ##### **iOS**
 ```objective-c
@@ -92,38 +81,31 @@ import com.adobe.marketing.mobile.Target;
 Target.registerExtension();
 ```
 
-##### **Javascript:**
-```javascript
-import {ACPTarget} from '@adobe/react-native-acptarget';
-
-ACPTarget.registerExtension();
-```
-
-##### Get custom visitor IDs:
+#### Get custom visitor IDs:
 
 ```javascript
 ACPTarget.getThirdPartyId().then(id => console.log("AdobeExperienceSDK: Third Party ID: " + id));
 ```
 
-##### Set custom visitor IDs:
+#### Set custom visitor IDs:
 
 ```javascript
 ACPTarget.setThirdPartyId("thirdPartyId");
 ```
 
-##### Reset user experience:
+#### Reset user experience:
 
 ```javascript
 ACPTarget.resetExperience();
 ```
 
-##### Get Target user identifier:
+#### Get Target user identifier:
 
 ```javascript
 ACPTarget.getTntId().then(id => console.log("AdobeExperienceSDK: TNT ID " + id));
 ```
 
-##### Load Target requests:
+#### Load Target requests:
 
 ```javascript
 var mboxParameters1 = {"status": "platinum"};
@@ -157,7 +139,7 @@ var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profi
 ACPTarget.retrieveLocationContent(locationRequests, parameters);
 ```
 
-##### Using the prefetch APIs:
+#### Using the prefetch APIs:
 
 ```javascript
 var mboxParameters1 = {"status": "platinum"};
@@ -179,13 +161,13 @@ var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profi
 ACPTarget.prefetchContent(prefetchList, parameters).then(success => console.log(success)).catch(err => console.log(err));
 ```
 
-##### Set preview restart deep link:
+#### Set preview restart deep link:
 
 ```javascript
 ACPTarget.setPreviewRestartDeeplink("https://www.adobe.com");
 ```
 
-##### Send an mbox click notification:
+#### Send an mbox click notification:
 
 ```javascript
 var purchaseIDs = ["34","125"];
@@ -198,7 +180,7 @@ var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profi
 ACPTarget.locationClickedWithName("locationName", parameters);
 ```
 
-##### Send an mbox location displayed notification:
+#### Send an mbox location displayed notification:
 ```javascript
 var purchaseIDs = ["34","125"];
 
@@ -210,7 +192,7 @@ var parameters = new ACPTargetParameters({"parameters": "parametervalue"}, profi
 ACPTarget.locationsDisplayed(["locationName", "locationName1"], parameters);
 ```
 
-##### ACPTargetPrefetchObject:
+#### ACPTargetPrefetchObject:
 The Target extension exports a class `ACPTargetPrefetchObject`.
 
 ```javascript
@@ -218,25 +200,25 @@ constructor(name?: string, targetParameters?: ACPTargetParameters);
 ```
 
 
-##### ACPTargetRequestObject:
+#### ACPTargetRequestObject:
 The Target extension exports a class `ACPTargetRequestObject`, which extends `ACPTargetPrefetchObject`.
 ```javascript
 constructor(name: string, targetParameters: ACPTargetParameters, defaultContent: string);
 ```
 
-##### ACPTargetOrder:
+#### ACPTargetOrder:
 The Target extension exports a class `ACPTargetOrder`.
 ```javascript
 constructor(orderId: string, total?: number, purchasedProductIds: Array<string>);
 ```
 
-##### ACPTargetProduct:
+#### ACPTargetProduct:
 The Target extension exports a class `ACPTargetOrder`.
 ```javascript
 constructor(productId: string, categoryId: string);
 ```
 
-##### ACPTargetParameters:
+#### ACPTargetParameters:
 The Target extension exports a class `ACPTargetParameters`.
 ```javascript
 constructor(parameters?: {string: string}, profileParameters?: {string: string}, product?: ACPTargetProduct, order?: ACPTargetOrder);
