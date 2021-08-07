@@ -224,7 +224,7 @@ The Target extension exports a class `ACPTargetParameters`.
 constructor(parameters?: {string: string}, profileParameters?: {string: string}, product?: ACPTargetProduct, order?: ACPTargetOrder);
 ```
 
-## Contributing
+## Contributing 
 See [CONTRIBUTING](CONTRIBUTING.md)
 
 ## License
