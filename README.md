@@ -6,7 +6,7 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/adobe/react-native-acptarget/main.svg?logo=circleci)](https://circleci.com/gh/adobe/workflows/react-native-acptarget) 
 [![license](https://img.shields.io/npm/l/@adobe/react-native-acptarget.svg)](https://github.com/adobe/react-native-acptarget/blob/main/LICENSE)
 
-`@adobe/react-native-acptarget` is a wrapper around the iOS and Android [AEP Target SDK](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/adobe-target) to allow for integration with React Native applications. Functionality to enable Adobe Target is provided entirely through JavaScript documented below.
+`@adobe/react-native-acptarget` is a wrapper around the iOS and Android [AEP Target SDK](https://developer.adobe.com/client-sdks/previous-versions/documentation/adobe-target/) to allow for integration with React Native applications. Functionality to enable Adobe Target is provided entirely through JavaScript documented below.
 
 
 ## Installation
@@ -50,7 +50,7 @@ make run-tests-locally
 
 ## Usage
 
-### [Target](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/adobe-target)
+### Target
 
 #### Importing the extension:
 ```javascript
